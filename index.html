@@ -54,6 +54,24 @@
   .pillbtn:active { transform: scale(0.95); }
   .pillbtn.active { background: #ff6b5e; border-color: #ff6b5e; color: #141a21; }
 
+  /* ---------- layer toggle ---------- */
+  #layerseg {
+    display: flex; border-radius: 999px; overflow: hidden;
+    background: rgba(20,28,38,0.85); border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+  }
+  .segbtn {
+    padding: 10px 13px; border: none; background: transparent;
+    color: #e8edf2; font-size: 13px; font-weight: 700; cursor: pointer;
+  }
+  .segbtn.active { background: #ff6b5e; color: #141a21; }
+  .segbtn:active { transform: scale(0.96); }
+  .deepbadge {
+    font-size: 10px; font-weight: 800; letter-spacing: 1px;
+    color: #141a21; background: #ffb35e; border-radius: 6px;
+    padding: 3px 7px; margin-left: 8px; vertical-align: middle;
+  }
+
   /* ---------- hint ---------- */
   #hint {
     position: fixed; bottom: 92px; left: 50%;
@@ -169,6 +187,10 @@
 </div>
 
 <div id="viewbar">
+  <div id="layerseg">
+    <button class="segbtn active" id="btn-layer-surface">Surface</button>
+    <button class="segbtn" id="btn-layer-deep">Deep</button>
+  </div>
   <button class="pillbtn" id="btn-front">Front</button>
   <button class="pillbtn" id="btn-back">Back</button>
   <button class="pillbtn" id="btn-reset">Reset</button>
@@ -272,22 +294,35 @@ function clearHighlights() {
   selected = null; hovered = null;
 }
 
-// ---- load model ----
+// ---- load models (surface set + deep set) ----
 const gltfLoader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('./vendor/');
 gltfLoader.setDRACOLoader(dracoLoader);
-gltfLoader.load('muscles.glb', (gltf) => {
-  const root = gltf.scene;
-  root.traverse((obj) => {
-    if (obj.isMesh) {
-      obj.material = new THREE.MeshStandardMaterial({
-        color: BASE_COLOR.clone(), roughness: 0.5, metalness: 0.08
+function loadGLB(url) {
+  return new Promise((resolve, reject) => {
+    gltfLoader.load(url, (gltf) => {
+      const root = gltf.scene;
+      root.traverse((obj) => {
+        if (obj.isMesh) {
+          obj.material = new THREE.MeshStandardMaterial({
+            color: BASE_COLOR.clone(), roughness: 0.5, metalness: 0.08
+          });
+          obj.userData.key = obj.name;
+          muscleMeshes.push(obj);
+        }
       });
-      obj.userData.key = obj.name;
-      muscleMeshes.push(obj);
-    }
+      resolve(root);
+    }, undefined, reject);
   });
+}
+Promise.all([
+  loadGLB('muscles.glb'),
+  // deep-layer model is optional: the app still works with the 22 surface muscles if it fails
+  loadGLB('muscles2.glb').catch(err => { console.warn('deep muscle model not loaded:', err); return null; })
+]).then((roots) => {
+  const root = new THREE.Group();
+  roots.forEach(r => { if (r) root.add(r); });
   scene.add(root);
 
   // frame the body — fit its full height in view with margin
@@ -307,11 +342,53 @@ gltfLoader.load('muscles.glb', (gltf) => {
   controls.update();
 
   document.getElementById('loader').classList.add('done');
+  // hide the layer toggle if the deep model didn't load
+  const hasDeep = muscleMeshes.some(m => {
+    const d = MUSCLE_DATA[m.userData.key];
+    return d && d.layer === 'deep';
+  });
+  if (!hasDeep) document.getElementById('layerseg').style.display = 'none';
+  setLayer('surface');
   buildList();
-}, undefined, (err) => {
+}).catch((err) => {
   document.querySelector('#loader p').textContent = 'Failed to load model. Check your connection and reload.';
   console.error(err);
 });
+
+// ---- muscle layers (surface / deep) ----
+let currentLayer = 'surface';
+function setOpacity(m, o) {
+  const ghost = o < 1;
+  m.material.transparent = ghost;
+  m.material.opacity = o;
+  m.material.needsUpdate = true;
+  m.userData.ghost = ghost;
+}
+function setLayer(layer) {
+  currentLayer = layer;
+  document.getElementById('btn-layer-surface').classList.toggle('active', layer === 'surface');
+  document.getElementById('btn-layer-deep').classList.toggle('active', layer === 'deep');
+  for (const m of muscleMeshes) {
+    const d = MUSCLE_DATA[m.userData.key];
+    const isDeep = !!(d && d.layer === 'deep');
+    if (layer === 'deep') {
+      // deep muscles solid, surface muscles fade to ghosts
+      m.visible = true;
+      setOpacity(m, isDeep ? 1 : 0.12);
+    } else {
+      if (isDeep) { m.visible = false; }
+      else { m.visible = true; setOpacity(m, 1); }
+    }
+  }
+  if (selected) {
+    const sd = MUSCLE_DATA[selected.userData.key];
+    const selDeep = !!(sd && sd.layer === 'deep');
+    if (selDeep !== (layer === 'deep')) select(null);
+  }
+  buildList(searchInput.value);
+}
+document.getElementById('btn-layer-surface').addEventListener('click', () => setLayer('surface'));
+document.getElementById('btn-layer-deep').addEventListener('click', () => setLayer('deep'));
 
 // ---- camera views ----
 let homeView = null;
@@ -347,7 +424,8 @@ function pick(clientX, clientY) {
   pointer.x = (clientX / window.innerWidth) * 2 - 1;
   pointer.y = -(clientY / window.innerHeight) * 2 + 1;
   raycaster.setFromCamera(pointer, camera);
-  const hits = raycaster.intersectObjects(muscleMeshes, false);
+  const hits = raycaster.intersectObjects(
+    muscleMeshes.filter(m => m.visible && !m.userData.ghost), false);
   return hits.length ? hits[0].object : null;
 }
 
@@ -427,9 +505,12 @@ function buildList(filter = '') {
     for (const [keyName, d] of items) {
       const el = document.createElement('div');
       el.className = 'list-item';
-      el.innerHTML = `<div><div class="nm">${d.name}</div><div class="rg">${d.region}</div></div><div class="arrow">&#8250;</div>`;
+      const badge = d.layer === 'deep' ? '<span class="deepbadge">DEEP</span>' : '';
+      el.innerHTML = `<div><div class="nm">${d.name}${badge}</div><div class="rg">${d.region}</div></div><div class="arrow">&#8250;</div>`;
       el.addEventListener('click', () => {
         overlay.classList.remove('open');
+        const wantDeep = d.layer === 'deep';
+        if ((currentLayer === 'deep') !== wantDeep) setLayer(wantDeep ? 'deep' : 'surface');
         const mesh = muscleMeshes.find(m => m.userData.key === keyName);
         select(mesh, true);
       });
