@@ -543,6 +543,7 @@ function animForWorkout(name) {
   const has = (...words) => words.every(w => n.includes(w));
   if (has('alternating') && has('curl')) return 'Alternating Curl';
   if (has('nordic')) return 'Nordic Curl';
+  if (has('lying') && has('leg') && has('curl')) return 'Lying Leg Curl';
   if (has('wrist') && has('curl')) return 'Wrist Curl';
   if (has('hammer') && has('curl')) return 'Hammer Curl';
   if (has('supination')) return 'Biceps Curl';
@@ -585,16 +586,20 @@ function untrackDemo(entry) {
   try { entry.renderer.dispose(); } catch (e) {}
 }
 
-function makeFigureScene(canvas, w, h, view) {
+function makeFigureScene(canvas, w, h, view, anim) {
   const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   r.setSize(w, h, false);
   const sc = new THREE.Scene();
   const cam = new THREE.PerspectiveCamera(30, w / h, 0.1, 20);
-  if (view === 'front') cam.position.set(0, 0.95, 3.0);
+  if (anim && anim.prone) {
+    cam.position.set(3.2, 0.9, 0);
+    cam.lookAt(0, 0.45, 0);
+  }
+  else if (view === 'front') cam.position.set(0, 0.95, 3.0);
   else if (view === 'side') cam.position.set(3.0, 0.95, 0.2);
   else cam.position.set(0.9, 1.05, 2.6);
-  cam.lookAt(0, 0.85, 0);
+  if (!(anim && anim.prone)) cam.lookAt(0, 0.85, 0);
   sc.add(new THREE.HemisphereLight(0xffffff, 0x2a3440, 1.1));
   const key = new THREE.DirectionalLight(0xffffff, 1.2);
   key.position.set(2, 3, 2);
@@ -635,7 +640,7 @@ function buildDemoCards(d) {
     card.appendChild(label);
     row.appendChild(card);
     try {
-      const built = makeFigureScene(canvas, 104, 104, EXERCISE_ANIMS[dm.key].view);
+      const built = makeFigureScene(canvas, 104, 104, EXERCISE_ANIMS[dm.key].view, EXERCISE_ANIMS[dm.key]);
       const stop = playAnimation(built.fig, EXERCISE_ANIMS[dm.key]);
       const entry = { renderer: built.renderer, scene: built.scene, camera: built.camera, stop };
       trackDemo(entry);
@@ -659,7 +664,7 @@ function openExerciseDetail(name, key) {
   canvas.width = Math.round(w * Math.min(window.devicePixelRatio, 2));
   canvas.height = Math.round(h * Math.min(window.devicePixelRatio, 2));
   try {
-    const built = makeFigureScene(canvas, w, h, a.view);
+    const built = makeFigureScene(canvas, w, h, a.view, a);
     const stop = playAnimation(built.fig, a);
     detailEntry = { renderer: built.renderer, scene: built.scene, camera: built.camera, stop };
     trackDemo(detailEntry);
