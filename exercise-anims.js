@@ -349,5 +349,159 @@ export const EXERCISE_ANIMS = {
       elbowL: { flex: [10, 15] },
       elbowR: { flex: [10, 15] }
     }
+  },
+"Crunches": {
+    tempo: 2.0,
+    view: "side",
+    supine: true,
+    highlight: ['torso'],
+    preparation: "Lie on your back with knees bent at 90 degrees and arms crossed over your chest.",
+    execution: "Curl your upper torso off the ground by contracting your abs. Lower back down with control to complete the rep.",
+    joints: {
+      hipL: { flex: [0, 0] },
+      hipR: { flex: [0, 0] },
+      kneeL: { flex: [90, 90] },
+      kneeR: { flex: [90, 90] },
+      spine: { flex: [0, 30] },
+      shoulderL: { flex: [25, 25] },
+      shoulderR: { flex: [25, 25] },
+      elbowL: { flex: [90, 90] },
+      elbowR: { flex: [90, 90] }
+    }
+  },
+  "Bicycle Crunches": {
+    tempo: 2.6,
+    view: "side",
+    supine: true,
+    highlight: ['torso'],
+    preparation: "Lie on your back with hands near your head and knees bent.",
+    execution: "Alternate bringing each elbow toward the opposite knee while twisting your torso. Keep a controlled rhythm as you switch sides.",
+    joints: {
+      hipL: { flex: [15, 85] },
+      hipR: { flex: [15, 85], phase: Math.PI },
+      kneeL: { flex: [25, 100] },
+      kneeR: { flex: [25, 100], phase: Math.PI },
+      spine: { flex: [10, 20], twist: [-25, 25] },
+      shoulderL: { flex: [30, 30] },
+      shoulderR: { flex: [30, 30] },
+      elbowL: { flex: [100, 100] },
+      elbowR: { flex: [100, 100] }
+    }
+  },
+  "Reverse Crunches": {
+    tempo: 2.2,
+    view: "side",
+    supine: true,
+    highlight: ['torso', 'thighL', 'thighR'],
+    preparation: "Lie on your back with knees bent and arms resting at your sides.",
+    execution: "Curl your hips and legs upward toward your chest. Lower them back down with control.",
+    joints: {
+      hipL: { flex: [0, 65] },
+      hipR: { flex: [0, 65] },
+      kneeL: { flex: [85, 95] },
+      kneeR: { flex: [85, 95] },
+      spine: { flex: [0, 12] },
+      shoulderL: { flex: [0, 5] },
+      shoulderR: { flex: [0, 5] },
+      elbowL: { flex: [10, 10] },
+      elbowR: { flex: [10, 10] }
+    }
+  },
+  "Russian Twists": {
+    tempo: 2.4,
+    view: "front",
+    rootY: [-0.45, -0.45],
+    highlight: ['torso'],
+    preparation: "Sit with knees bent, torso leaned back, and hands together in front of you.",
+    execution: "Rotate your torso from side to side while keeping your core engaged. Maintain the lean throughout the movement.",
+    joints: {
+      hipL: { flex: [85, 85] },
+      hipR: { flex: [85, 85] },
+      kneeL: { flex: [90, 90] },
+      kneeR: { flex: [90, 90] },
+      spine: { flex: [-25, -25], twist: [-35, 35] },
+      shoulderL: { flex: [55, 55] },
+      shoulderR: { flex: [55, 55] },
+      elbowL: { flex: [5, 10] },
+      elbowR: { flex: [5, 10] }
+    }
+  },
+  "Dead Bugs": {
+    tempo: 2.8,
+    view: "side",
+    supine: true,
+    highlight: ['torso'],
+    preparation: "Lie on your back with hips and knees at 90 degrees and arms pointing upward.",
+    execution: "Extend one leg while reaching the opposite arm overhead. Alternate sides while keeping your lower back flat.",
+    joints: {
+      hipL: { flex: [90, 15] },
+      hipR: { flex: [90, 15], phase: Math.PI },
+      kneeL: { flex: [90, 15] },
+      kneeR: { flex: [90, 15], phase: Math.PI },
+      spine: { flex: [0, 5] },
+      shoulderL: { flex: [90, 160], phase: Math.PI },
+      shoulderR: { flex: [90, 160] },
+      elbowL: { flex: [0, 0] },
+      elbowR: { flex: [0, 0] }
+    }
+  },
+  "Glute Bridges": {
+    tempo: 2.4,
+    view: "side",
+    supine: true,
+    highlight: ['thighL', 'thighR', 'torso'],
+    preparation: "Lie on your back with knees bent at 90 degrees and feet flat on the ground.",
+    execution: "Drive through your heels to lift your hips toward the ceiling. Lower back down with control.",
+    joints: {
+      hipL: { flex: [45, 5] },
+      hipR: { flex: [45, 5] },
+      kneeL: { flex: [90, 70] },
+      kneeR: { flex: [90, 70] },
+      spine: { flex: [0, 0] },
+      shoulderL: { flex: [0, 5] },
+      shoulderR: { flex: [0, 5] },
+      elbowL: { flex: [10, 10] },
+      elbowR: { flex: [10, 10] }
+    }
+  },
+  "Push-Ups": {
+    tempo: 2.4,
+    view: "side",
+    prone: true,
+    rootY: [0, -0.28],
+    highlight: ['torso', 'upperArmL', 'upperArmR'],
+    preparation: "Start in a plank position with hands under your shoulders and body in a straight line.",
+    execution: "Lower your body toward the ground by bending your elbows. Push back up to the starting position.",
+    joints: {
+      hipL: { flex: [0, 0] },
+      hipR: { flex: [0, 0] },
+      kneeL: { flex: [0, 5] },
+      kneeR: { flex: [0, 5] },
+      spine: { flex: [0, 0] },
+      shoulderL: { flex: [0, 0], abd: [8, 8] },
+      shoulderR: { flex: [0, 0], abd: [8, 8] },
+      elbowL: { flex: [10, 95] },
+      elbowR: { flex: [10, 95] }
+    }
+  },
+  "Lying Leg Raises": {
+    tempo: 2.6,
+    view: "side",
+    supine: true,
+    camDist: 3.9, camY: 0.6,
+    highlight: ['torso', 'thighL', 'thighR'],
+    preparation: "Lie on your back with legs straight and arms resting at your sides.",
+    execution: "Lift both legs upward until they are vertical. Lower them back down with control while keeping them straight.",
+    joints: {
+      hipL: { flex: [0, 90] },
+      hipR: { flex: [0, 90] },
+      kneeL: { flex: [0, 5] },
+      kneeR: { flex: [0, 5] },
+      spine: { flex: [0, 5] },
+      shoulderL: { flex: [0, 5] },
+      shoulderR: { flex: [0, 5] },
+      elbowL: { flex: [10, 10] },
+      elbowR: { flex: [10, 10] }
+    }
   }
 };
