@@ -64,16 +64,17 @@ export const EXERCISE_ANIMS = {
     tempo: 2.8,
     view: "side",
     highlight: ['thighL', 'thighR', 'shinL', 'shinR', 'torso'],
+    rootY: [-0.35, 0],
     preparation: "Stand with feet roughly shoulder-width apart, toes slightly out, and arms extended forward for balance.",
-    execution: "Sit the hips back and bend the knees to lower until the thighs are near parallel to the ground. Keep the chest up and knees tracking over the toes, then drive through the heels to stand.",
+    execution: "Sit the hips back and down, bending the knees to lower until the thighs are near parallel to the ground. Keep the chest up and knees tracking over the toes, then drive through the heels to stand.",
     joints: {
-      hipL: { flex: [0, 100] },
-      hipR: { flex: [0, 100] },
-      kneeL: { flex: [5, 120] },
-      kneeR: { flex: [5, 120] },
-      spine: { flex: [0, 22] },
-      shoulderL: { flex: [0, 55] },
-      shoulderR: { flex: [0, 55] }
+      hipL: { flex: [0, 75] },
+      hipR: { flex: [0, 75] },
+      kneeL: { flex: [5, 95] },
+      kneeR: { flex: [5, 95] },
+      spine: { flex: [0, 15] },
+      shoulderL: { flex: [0, 45] },
+      shoulderR: { flex: [0, 45] }
     }
   },
   "Deadlift": {
@@ -83,11 +84,11 @@ export const EXERCISE_ANIMS = {
     preparation: "Stand with feet hip-width apart and arms hanging straight down in front of the thighs.",
     execution: "Hinge at the hips by pushing them backward, maintaining a neutral spine and only a soft knee bend. Lower the torso until a hamstring stretch is felt, then drive the hips forward to return upright.",
     joints: {
-      hipL: { flex: [0, 80] },
-      hipR: { flex: [0, 80] },
-      kneeL: { flex: [5, 28] },
-      kneeR: { flex: [5, 28] },
-      spine: { flex: [0, 42] },
+      hipL: { flex: [0, 12] },
+      hipR: { flex: [0, 12] },
+      kneeL: { flex: [5, 20] },
+      kneeR: { flex: [5, 20] },
+      spine: { flex: [0, 45] },
       shoulderL: { flex: [0, 4], abd: [8, 8] },
       shoulderR: { flex: [0, 4], abd: [-8, -8] }
     }
@@ -99,9 +100,11 @@ export const EXERCISE_ANIMS = {
     preparation: "Hinge at the hips so the torso is nearly parallel to the ground with a flat back and arms hanging straight down.",
     execution: "Pull the elbows back and upward toward the hips while squeezing the shoulder blades. Keep the torso stable, then lower the arms under control to the hanging position.",
     joints: {
-      spine: { flex: [48, 52] },
-      hipL: { flex: [52, 58] },
-      hipR: { flex: [52, 58] },
+      spine: { flex: [48, 54] },
+      hipL: { flex: [10, 18] },
+      hipR: { flex: [10, 18] },
+      kneeL: { flex: [10, 25] },
+      kneeR: { flex: [10, 25] },
       shoulderL: { flex: [4, -32], abd: [12, 22] },
       shoulderR: { flex: [4, -32], abd: [-12, -22] },
       elbowL: { flex: [12, 105] },
