@@ -506,5 +506,193 @@ export const EXERCISE_ANIMS = {
       elbowL: { flex: [10, 10] },
       elbowR: { flex: [10, 10] }
     }
+  },
+"Overhead Lat Stretch": {
+  tempo: 3.5,
+  view: "front",
+  highlight: ['torso', 'upperArmR'],
+  preparation: "Stand tall with feet hip-width apart and one arm relaxed at your side.",
+  execution: "Reach the opposite arm straight overhead and gently lean your torso away from that arm. Hold the side bend to lengthen the lat, then ease back to center.",
+  joints: {
+    shoulderR: { flex: [170, 180], abd: [10, 15] },
+    shoulderL: { flex: [5, 5], abd: [8, 8] },
+    elbowL: { flex: [10, 10] },
+    elbowR: { flex: [5, 10] },
+    spine: { flex: [0, -10], twist: [0, 0] },
+    hipL: { flex: [0, 0] },
+    hipR: { flex: [0, 0] },
+    kneeL: { flex: [0, 0] },
+    kneeR: { flex: [0, 0] }
   }
+},
+"Child's Pose Lat Stretch": {
+  tempo: 4.0,
+  view: "side",
+  prone: true,
+  highlight: ['torso'],
+  preparation: "Kneel on the floor with your hips sitting back toward your heels.",
+  execution: "Fold your torso forward and walk your hands overhead along the floor. Gently shift the hands to one side to deepen the lat stretch, then ease back.",
+  rootY: [-0.35, -0.38],
+  joints: {
+    hipL: { flex: [100, 110] },
+    hipR: { flex: [100, 110] },
+    kneeL: { flex: [130, 135] },
+    kneeR: { flex: [130, 135] },
+    shoulderL: { flex: [160, 170], abd: [8, 12] },
+    shoulderR: { flex: [160, 170], abd: [8, 12] },
+    elbowL: { flex: [5, 10] },
+    elbowR: { flex: [5, 10] },
+    spine: { flex: [40, 50] }
+  }
+},
+"Child's Pose": {
+  tempo: 4.0,
+  view: "side",
+  prone: true,
+  highlight: ['torso'],
+  preparation: "Kneel on the floor and sit your hips back toward your heels.",
+  execution: "Fold your torso forward so your forehead rests toward the floor and extend both arms straight ahead. Breathe into the lower back and gently ease the stretch.",
+  rootY: [-0.35, -0.38],
+  joints: {
+    hipL: { flex: [95, 105] },
+    hipR: { flex: [95, 105] },
+    kneeL: { flex: [130, 135] },
+    kneeR: { flex: [130, 135] },
+    shoulderL: { flex: [140, 150], abd: [8, 10] },
+    shoulderR: { flex: [140, 150], abd: [8, 10] },
+    elbowL: { flex: [10, 15] },
+    elbowR: { flex: [10, 15] },
+    spine: { flex: [35, 45] }
+  }
+},
+"Cat-Cow": {
+  tempo: 3.5,
+  view: "side",
+  prone: true,
+  highlight: ['torso'],
+  preparation: "Start on all fours with wrists under shoulders and knees under hips.",
+  execution: "Slowly round your spine upward into cat, then reverse into cow by dipping the belly and lifting the chest. Move gently with your breath between the two shapes.",
+  joints: {
+    hipL: { flex: [80, 90] },
+    hipR: { flex: [80, 90] },
+    kneeL: { flex: [85, 95] },
+    kneeR: { flex: [85, 95] },
+    shoulderL: { flex: [85, 95], abd: [8, 10] },
+    shoulderR: { flex: [85, 95], abd: [8, 10] },
+    elbowL: { flex: [5, 10] },
+    elbowR: { flex: [5, 10] },
+    spine: { flex: [-20, 25] }
+  }
+},
+"Cross-Body Arm Stretch": {
+  tempo: 3.0,
+  view: "front",
+  highlight: ['upperArmR', 'torso'],
+  preparation: "Stand upright with one arm extended across your chest.",
+  execution: "Use the opposite hand to gently pull the straight arm closer to your body. Hold the stretch across the rear shoulder and upper back, then ease the arm back out.",
+  joints: {
+    shoulderR: { flex: [85, 90], abd: [-25, -30] },
+    shoulderL: { flex: [40, 45], abd: [8, 12] },
+    elbowR: { flex: [5, 10] },
+    elbowL: { flex: [90, 100] },
+    spine: { flex: [0, 5] },
+    hipL: { flex: [0, 0] },
+    hipR: { flex: [0, 0] },
+    kneeL: { flex: [0, 0] },
+    kneeR: { flex: [0, 0] }
+  }
+},
+"Thread the Needle": {
+  tempo: 3.5,
+  view: "front",
+  prone: true,
+  highlight: ['torso', 'upperArmR'],
+  preparation: "Begin on all fours with a neutral spine.",
+  execution: "Thread one arm under your torso and lower that shoulder toward the floor while the other arm stays planted. Rotate gently through the upper back, then unwind back to center.",
+  joints: {
+    hipL: { flex: [85, 90] },
+    hipR: { flex: [85, 90] },
+    kneeL: { flex: [90, 95] },
+    kneeR: { flex: [90, 95] },
+    shoulderR: { flex: [60, 80], abd: [-30, -40] },
+    shoulderL: { flex: [85, 90], abd: [8, 10] },
+    elbowR: { flex: [10, 20] },
+    elbowL: { flex: [5, 10] },
+    spine: { flex: [10, 20], twist: [0, 35] }
+  }
+},
+"Doorway Chest Opener": {
+  tempo: 3.5,
+  view: "front",
+  highlight: ['torso'],
+  preparation: "Stand in a doorway with both forearms resting on the frame at shoulder height.",
+  execution: "Gently lean your chest forward so the shoulders open and the upper back lengthens. Hold the stretch through the front of the chest, then ease back upright.",
+  joints: {
+    shoulderL: { flex: [85, 90], abd: [75, 85] },
+    shoulderR: { flex: [85, 90], abd: [75, 85] },
+    elbowL: { flex: [85, 90] },
+    elbowR: { flex: [85, 90] },
+    spine: { flex: [-5, -12] },
+    hipL: { flex: [5, 10] },
+    hipR: { flex: [5, 10] },
+    kneeL: { flex: [5, 8] },
+    kneeR: { flex: [5, 8] }
+  }
+},
+"Eagle Arms": {
+  tempo: 3.0,
+  view: "front",
+  highlight: ['upperArmL', 'upperArmR', 'torso'],
+  preparation: "Stand tall and cross one arm under the other in front of your chest.",
+  execution: "Wrap the arms and lift the elbows while drawing the hands toward each other. Hold the stretch between the shoulder blades, then slowly unwind.",
+  joints: {
+    shoulderL: { flex: [75, 85], abd: [-20, -25] },
+    shoulderR: { flex: [75, 85], abd: [-20, -25] },
+    elbowL: { flex: [95, 105] },
+    elbowR: { flex: [95, 105] },
+    spine: { flex: [10, 15] },
+    hipL: { flex: [0, 0] },
+    hipR: { flex: [0, 0] },
+    kneeL: { flex: [0, 0] },
+    kneeR: { flex: [0, 0] }
+  }
+},
+"Child's Pose Side Bend": {
+  tempo: 4.0,
+  view: "side",
+  prone: true,
+  highlight: ['torso'],
+  preparation: "Kneel and sit the hips back into child's pose with arms extended forward.",
+  execution: "Walk both hands toward one side so the torso lengthens laterally. Hold the side stretch through the back and ribs, then ease the hands back to center.",
+  rootY: [-0.35, -0.38],
+  joints: {
+    hipL: { flex: [100, 110] },
+    hipR: { flex: [100, 110] },
+    kneeL: { flex: [130, 135] },
+    kneeR: { flex: [130, 135] },
+    shoulderL: { flex: [150, 165], abd: [25, 35] },
+    shoulderR: { flex: [150, 165], abd: [25, 35] },
+    elbowL: { flex: [8, 12] },
+    elbowR: { flex: [8, 12] },
+    spine: { flex: [40, 50], twist: [0, 20] }
+  }
+},
+"Deep Breathing Expansion": {
+  tempo: 4.0,
+  view: "front",
+  highlight: ['torso'],
+  preparation: "Sit upright with both hands resting lightly on your lower ribs.",
+  execution: "Inhale slowly to expand the ribcage outward and upward, then exhale to release. Keep the movement minimal and smooth so the breath itself creates the gentle stretch.",
+  joints: {
+    hipL: { flex: [85, 90] },
+    hipR: { flex: [85, 90] },
+    kneeL: { flex: [85, 90] },
+    kneeR: { flex: [85, 90] },
+    shoulderL: { flex: [25, 35], abd: [20, 30] },
+    shoulderR: { flex: [25, 35], abd: [20, 30] },
+    elbowL: { flex: [70, 80] },
+    elbowR: { flex: [70, 80] },
+    spine: { flex: [-5, 8] }
+  }
+}
 };
