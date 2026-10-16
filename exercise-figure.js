@@ -73,8 +73,8 @@ export function createExerciseFigure(THREE) {
     joints['wrist' + side] = { flex: wrist, twist: wrist };
     segments['hand' + side] = hand;
 
-    shoulder.rotation.z = (side === 'L' ? 8 : -8) * DEG;
-    elbow.rotation.x = 10 * DEG;
+    shoulder.rotation.z = (side === 'L' ? -8 : 8) * DEG;
+    elbow.rotation.x = -10 * DEG;
   }
   makeArm('L');
   makeArm('R');
@@ -105,7 +105,7 @@ export function createExerciseFigure(THREE) {
     foot.position.set(0, -0.44, 0.04);
     knee.add(foot);
 
-    knee.rotation.x = 5 * DEG;
+    knee.rotation.x = -5 * DEG;
   }
   makeLeg('L');
   makeLeg('R');
@@ -171,16 +171,16 @@ export function playAnimation(fig, animData) {
 
       if (data.flex && j.flex) {
         const [mn, mx] = data.flex;
-        j.flex.rotation.x = (mn + (mx - mn) * t) * DEG;
+        j.flex.rotation.x = -(mn + (mx - mn) * t) * DEG;
       } else if (j.flex && REST[jName].flex != null) {
-        j.flex.rotation.x = REST[jName].flex * DEG;
+        j.flex.rotation.x = -REST[jName].flex * DEG;
       }
 
       if (data.abd && j.abd) {
         const [mn, mx] = data.abd;
-        j.abd.rotation.z = (mn + (mx - mn) * t) * DEG;
+        j.abd.rotation.z = -(mn + (mx - mn) * t) * DEG;
       } else if (j.abd && REST[jName].abd != null) {
-        j.abd.rotation.z = REST[jName].abd * DEG;
+        j.abd.rotation.z = -REST[jName].abd * DEG;
       }
 
       if (j.twist) {
