@@ -18,7 +18,7 @@ export function createExerciseFigure(THREE) {
   const { Group, Mesh, CapsuleGeometry, SphereGeometry, BoxGeometry,
           MeshStandardMaterial, Object3D } = THREE;
   const DEG = Math.PI / 180;
-  const bodyColor = 0xe8917d;
+  const bodyColor = 0xcc5544;
   const group = new Group();
   const joints = {};
   const segments = {};
