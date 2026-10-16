@@ -178,4 +178,154 @@ export const EXERCISE_ANIMS = {
       wristR: { flex: [-18, 32] }
     }
   },
+  "Front Raise": {
+    tempo: 2.2,
+    view: "side",
+    highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR'],
+    preparation: "Stand tall with feet hip-width apart and arms hanging at your sides with a soft bend in the elbows.",
+    execution: "Raise both arms straight forward to shoulder height, keeping the slight elbow bend and palms facing down. Pause briefly, then lower the arms slowly back to your sides under control.",
+    joints: {
+      shoulderL: { flex: [0, 90], abd: [8, 5] },
+      shoulderR: { flex: [0, 90], abd: [-8, -5] },
+      elbowL: { flex: [10, 20] },
+      elbowR: { flex: [10, 20] }
+    }
+  },
+  "Reverse Fly": {
+    tempo: 2.5,
+    view: "front",
+    highlight: ['upperArmL', 'upperArmR', 'torso'],
+    rootY: [-0.1, -0.1],
+    preparation: "Hinge at the hips so your torso is angled forward about 45 degrees with a flat back and arms hanging down.",
+    execution: "With a slight bend in the elbows, sweep both arms out to the sides until they are roughly parallel to the ground. Squeeze your shoulder blades together at the top, then lower the arms slowly.",
+    joints: {
+      spine: { flex: [42, 48] },
+      hipL: { flex: [12, 18] },
+      hipR: { flex: [12, 18] },
+      kneeL: { flex: [10, 20] },
+      kneeR: { flex: [10, 20] },
+      shoulderL: { flex: [5, 10], abd: [10, 80] },
+      shoulderR: { flex: [5, 10], abd: [-10, -80] },
+      elbowL: { flex: [15, 25] },
+      elbowR: { flex: [15, 25] }
+    }
+  },
+  "Lunge": {
+    tempo: 2.8,
+    view: "side",
+    highlight: ['thighL', 'thighR', 'shinL', 'shinR', 'torso'],
+    rootY: [-0.32, 0],
+    preparation: "Stand in a split stance with one foot forward and the other back, torso upright and core braced.",
+    execution: "Lower your body by bending both knees until the back knee approaches the ground, keeping the front knee over the ankle. Push through the front heel to rise back up.",
+    joints: {
+      hipL: { flex: [15, 70] },
+      hipR: { flex: [5, -12] },
+      kneeL: { flex: [10, 85] },
+      kneeR: { flex: [10, 45] },
+      spine: { flex: [0, 6] }
+    }
+  },
+  "Standing Hip Abduction": {
+    tempo: 2.0,
+    view: "front",
+    highlight: ['thighR', 'shinR'],
+    preparation: "Stand tall on your left leg with the right leg free and a slight bend in the supporting knee for balance.",
+    execution: "Keeping the torso upright and the working leg straight, swing the right leg out to the side. Pause at the top of the range, then return the leg slowly to the start under control.",
+    joints: {
+      hipR: { flex: [0, 5], abd: [0, -35] },
+      kneeR: { flex: [5, 8] },
+      hipL: { flex: [0, 5] },
+      kneeL: { flex: [5, 8] },
+      spine: { flex: [0, 3] }
+    }
+  },
+  "Face Pull": {
+    tempo: 2.3,
+    view: "front",
+    highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR', 'torso'],
+    preparation: "Stand upright with arms extended forward at shoulder height and a soft bend in the elbows.",
+    execution: "Pull the elbows high and wide back toward your face while externally rotating the shoulders. Squeeze the shoulder blades together at the end range, then slowly return the arms forward.",
+    joints: {
+      shoulderL: { flex: [80, 40], abd: [15, 50] },
+      shoulderR: { flex: [80, 40], abd: [-15, -50] },
+      elbowL: { flex: [20, 90] },
+      elbowR: { flex: [20, 90] },
+      spine: { flex: [0, 5] }
+    }
+  },
+  "Band Pull-Apart": {
+    tempo: 2.1,
+    view: "front",
+    highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR'],
+    preparation: "Stand tall with arms extended straight forward at shoulder height, hands together in front of you.",
+    execution: "Keeping the elbows locked straight, pull the hands apart out to the sides until the arms are roughly in line with the shoulders. Squeeze the shoulder blades, then return the hands together slowly.",
+    joints: {
+      shoulderL: { flex: [85, 70], abd: [5, 75] },
+      shoulderR: { flex: [85, 70], abd: [-5, -75] },
+      elbowL: { flex: [8, 12] },
+      elbowR: { flex: [8, 12] }
+    }
+  },
+  "Pull-Up": {
+    tempo: 2.6,
+    view: "front",
+    highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR', 'torso'],
+    lift: [0, 0.08],
+    preparation: "Stand with arms extended fully overhead as if gripping a bar, core braced and shoulders set.",
+    execution: "Pull the elbows down and back toward your ribs while driving the chest upward. Squeeze the shoulder blades at the top of the pull, then slowly extend the arms back overhead.",
+    joints: {
+      shoulderL: { flex: [160, 40], abd: [10, 25] },
+      shoulderR: { flex: [160, 40], abd: [-10, -25] },
+      elbowL: { flex: [10, 110] },
+      elbowR: { flex: [10, 110] },
+      spine: { flex: [0, 8] }
+    }
+  },
+  "Standing Back Extension": {
+    tempo: 2.4,
+    view: "side",
+    highlight: ['torso', 'thighL', 'thighR'],
+    preparation: "Stand with feet hip-width apart and hinge slightly forward at the hips with a neutral spine.",
+    execution: "Extend the torso by driving the hips forward and lifting the chest until you are upright, then continue a few degrees past neutral into a gentle back extension. Return slowly to the slight forward hinge.",
+    joints: {
+      spine: { flex: [25, -12] },
+      hipL: { flex: [20, -5] },
+      hipR: { flex: [20, -5] },
+      kneeL: { flex: [5, 8] },
+      kneeR: { flex: [5, 8] }
+    }
+  },
+  "Romanian Deadlift": {
+    tempo: 2.8,
+    view: "side",
+    highlight: ['thighL', 'thighR', 'torso'],
+    preparation: "Stand with feet hip-width apart, knees soft but nearly straight, and arms hanging straight down in front of your thighs.",
+    execution: "Push the hips back and hinge forward, sliding the hands down the thighs toward mid-shin while keeping the back flat and legs nearly straight. Squeeze the glutes to drive the hips forward and stand tall.",
+    joints: {
+      hipL: { flex: [0, 10] },
+      hipR: { flex: [0, 10] },
+      kneeL: { flex: [5, 12] },
+      kneeR: { flex: [5, 12] },
+      spine: { flex: [0, 55] },
+      shoulderL: { flex: [0, 8] },
+      shoulderR: { flex: [0, 8] }
+    }
+  },
+  "Nordic Curl": {
+    tempo: 3.2,
+    view: "side",
+    highlight: ['thighL', 'thighR', 'shinL', 'shinR'],
+    rootY: [-0.47, -0.47],
+    preparation: "Kneel upright with feet anchored, torso tall and core braced, arms resting at your sides.",
+    execution: "Keeping a straight line from knees to head, slowly lower your torso forward toward the ground, resisting with the hamstrings. Catch yourself at the bottom, then drive back up to kneeling.",
+    joints: {
+      hipL: { flex: [0, 5] },
+      hipR: { flex: [0, 5] },
+      kneeL: { flex: [88, 92] },
+      kneeR: { flex: [88, 92] },
+      spine: { flex: [8, 68] },
+      shoulderL: { flex: [0, 10] },
+      shoulderR: { flex: [0, 10] }
+    }
+  }
 };
