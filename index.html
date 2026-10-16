@@ -318,8 +318,9 @@ function loadGLB(url) {
 }
 Promise.all([
   loadGLB('muscles.glb'),
-  // deep-layer model is optional: the app still works with the 22 surface muscles if it fails
-  loadGLB('muscles2.glb').catch(err => { console.warn('deep muscle model not loaded:', err); return null; })
+  // deep-layer models are optional: the app still works without them if a file fails
+  loadGLB('muscles2.glb').catch(err => { console.warn('deep muscle model not loaded:', err); return null; }),
+  loadGLB('muscles3.glb').catch(err => { console.warn('deep muscle model 2 not loaded:', err); return null; })
 ]).then((roots) => {
   const root = new THREE.Group();
   roots.forEach(r => { if (r) root.add(r); });
