@@ -480,7 +480,7 @@ export const EXERCISE_ANIMS = {
       kneeR: { flex: [0, 5] },
       spine: { flex: [0, 0] },
       shoulderL: { flex: [0, 0], abd: [45, 45] },
-      shoulderR: { flex: [0, 0], abd: [45, 45] },
+      shoulderR: { flex: [0, 0], abd: [-45, -45] },
       elbowL: { flex: [10, 95] },
       elbowR: { flex: [10, 95] }
     }
