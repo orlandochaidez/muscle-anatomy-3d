@@ -210,8 +210,7 @@
 <div id="topbar">
   <h1>MUSCLE<span>ANATOMY</span> 3D</h1>
   <div class="topbtns">
-    <button class="iconbtn" id="btn-list" title="Muscle list">&#9776;</button>
-    <button class="iconbtn" id="btn-spin" title="Auto-rotate">&#8635;</button>
+    <button class="iconbtn" id="btn-list" title="Search muscles"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
   </div>
 </div>
 
@@ -622,14 +621,16 @@ function makeFigureScene(canvas, w, h, view, anim) {
   r.setSize(w, h, false);
   const sc = new THREE.Scene();
   const cam = new THREE.PerspectiveCamera(30, w / h, 0.1, 20);
+  // per-exercise camera overrides (e.g. overhead moves need a wider frame)
+  const dist = (anim && anim.camDist) || 3.0;
+  const lookY = (anim && anim.camY) || 0.85;
   if (anim && anim.prone) {
     cam.position.set(3.2, 0.9, 0);
     cam.lookAt(0, 0.45, 0);
   }
-  else if (view === 'front') cam.position.set(0, 0.95, 3.0);
-  else if (view === 'side') cam.position.set(3.0, 0.95, 0.2);
-  else cam.position.set(0.9, 1.05, 2.6);
-  if (!(anim && anim.prone)) cam.lookAt(0, 0.85, 0);
+  else if (view === 'front') { cam.position.set(0, lookY + 0.1, dist); cam.lookAt(0, lookY, 0); }
+  else if (view === 'side') { cam.position.set(dist, lookY + 0.1, 0.2); cam.lookAt(0, lookY, 0); }
+  else { cam.position.set(0.9, lookY + 0.2, 2.6); cam.lookAt(0, lookY, 0); }
   sc.add(new THREE.HemisphereLight(0xffffff, 0x2a3440, 1.1));
   const key = new THREE.DirectionalLight(0xffffff, 1.2);
   key.position.set(2, 3, 2);
@@ -748,10 +749,6 @@ document.getElementById('btn-list-close').addEventListener('click', () => overla
 searchInput.addEventListener('input', () => buildList(searchInput.value));
 
 // ---- top / view buttons ----
-document.getElementById('btn-spin').addEventListener('click', (e) => {
-  controls.autoRotate = !controls.autoRotate;
-  e.currentTarget.classList.toggle('active', controls.autoRotate);
-});
 document.getElementById('btn-front').addEventListener('click', () => orbitTo(0));
 document.getElementById('btn-back').addEventListener('click', () => orbitTo(180));
 document.getElementById('btn-reset').addEventListener('click', () => {
