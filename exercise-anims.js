@@ -73,6 +73,8 @@ export const EXERCISE_ANIMS = {
       hipR: { flex: [0, 88] },
       kneeL: { flex: [5, 108] },
       kneeR: { flex: [5, 108] },
+      ankleL: { flex: [0, 20] },
+      ankleR: { flex: [0, 20] },
       spine: { flex: [0, 32] },
       shoulderL: { flex: [0, 50] },
       shoulderR: { flex: [0, 50] }
