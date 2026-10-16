@@ -510,6 +510,7 @@ export const EXERCISE_ANIMS = {
 "Overhead Lat Stretch": {
   tempo: 3.5,
   view: "front",
+  camDist: 4.0, camY: 1.0,
   highlight: ['torso', 'upperArmR'],
   preparation: "Stand tall with feet hip-width apart and one arm relaxed at your side.",
   execution: "Reach the opposite arm straight overhead and gently lean your torso away from that arm. Hold the side bend to lengthen the lat, then ease back to center.",
