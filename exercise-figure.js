@@ -102,8 +102,12 @@ export function createExerciseFigure(THREE) {
     segments['shin' + side] = shin;
 
     const foot = new Mesh(new BoxGeometry(0.09, 0.04, 0.20), baseMat.clone());
-    foot.position.set(0, -0.44, 0.04);
-    knee.add(foot);
+    foot.position.set(0, 0, 0.04);
+    const ankle = new Object3D();
+    ankle.position.y = -0.44;
+    knee.add(ankle);
+    ankle.add(foot);
+    joints['ankle' + side] = { flex: ankle };
 
     knee.rotation.x = 5 * DEG;
   }
@@ -124,6 +128,8 @@ export function playAnimation(fig, animData) {
     hipR: { flex: 0, abd: 0 },
     kneeL: { flex: 5 },
     kneeR: { flex: 5 },
+    ankleL: { flex: 0 },
+    ankleR: { flex: 0 },
     wristL: { flex: 0, twist: 90 },
     wristR: { flex: 0, twist: -90 },
     spine: { flex: 0 }
