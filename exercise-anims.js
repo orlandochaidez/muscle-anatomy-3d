@@ -115,6 +115,7 @@ export const EXERCISE_ANIMS = {
   "Standing Calf Raise": {
     tempo: 1.8,
     view: "side",
+    camDist: 3.2,
     highlight: ['shinL', 'shinR'],
     rootY: [0, 0.05],
     preparation: "Stand tall with feet hip-width apart and weight balanced evenly.",
