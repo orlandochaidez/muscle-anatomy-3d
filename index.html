@@ -119,6 +119,35 @@
   .move-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
   .move-how { font-size: 14px; line-height: 1.55; color: #aeb8c2; }
 
+  /* ---------- exercise demo cards ---------- */
+  #ex-demos { display: none; }
+  #ex-demos.has-demos { display: block; }
+  .exrow { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 12px; -webkit-overflow-scrolling: touch; }
+  .excard {
+    flex: 0 0 104px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 12px; overflow: hidden; cursor: pointer;
+  }
+  .excard:active { transform: scale(0.96); }
+  .excard canvas { display: block; width: 104px; height: 104px; }
+  .excard-name { font-size: 11px; font-weight: 700; text-align: center; padding: 6px 4px 8px; color: #dfe6ee; line-height: 1.25; }
+
+  /* ---------- exercise detail overlay ---------- */
+  #ex-detail {
+    position: fixed; inset: 0; z-index: 60; background: #0a0e14;
+    display: flex; flex-direction: column; transform: translateY(102%); transition: transform 0.32s ease;
+    padding-top: max(10px, env(safe-area-inset-top));
+  }
+  #ex-detail.open { transform: translateY(0); }
+  #exd-head { display: flex; align-items: center; gap: 12px; padding: 6px 16px 4px; }
+  #exd-back {
+    width: 38px; height: 38px; border-radius: 50%; flex: 0 0 38px;
+    background: rgba(255,255,255,0.08); border: none; color: #e8edf2;
+    font-size: 18px; cursor: pointer;
+  }
+  #exd-title { font-size: 19px; font-weight: 800; }
+  #exd-canvas { width: 100%; height: 320px; display: block; }
+  #exd-body { overflow-y: auto; padding: 4px 20px 34px; -webkit-overflow-scrolling: touch; }
+
   /* ---------- muscle list overlay ---------- */
   #list-overlay {
     position: fixed; inset: 0; z-index: 40;
@@ -207,10 +236,28 @@
   </div>
   <div id="sheet-body">
     <div id="sheet-function"></div>
+    <div id="ex-demos">
+      <div class="sec-title">Exercise Demos</div>
+      <div class="exrow" id="ex-row"></div>
+    </div>
     <div class="sec-title">Stretches</div>
     <div id="sheet-stretches"></div>
     <div class="sec-title">Workouts</div>
     <div id="sheet-workouts"></div>
+  </div>
+</div>
+
+<div id="ex-detail">
+  <div id="exd-head">
+    <button id="exd-back">&#8592;</button>
+    <div id="exd-title"></div>
+  </div>
+  <canvas id="exd-canvas"></canvas>
+  <div id="exd-body">
+    <div class="sec-title">Preparation</div>
+    <div id="exd-prep" class="move-how"></div>
+    <div class="sec-title">Execution</div>
+    <div id="exd-exec" class="move-how"></div>
   </div>
 </div>
 
@@ -241,6 +288,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/DRACOLoader.js';
+import { createExerciseFigure, playAnimation } from './exercise-figure.js';
+import { EXERCISE_ANIMS } from './exercise-anims.js';
 
 const container = document.getElementById('scene-container');
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -482,10 +531,132 @@ function openSheet(d) {
   document.getElementById('sheet-workouts').innerHTML =
     d.workouts.map(w => `<div class="move"><div class="move-name">${w.name}</div><div class="move-how">${w.how}</div></div>`).join('');
   document.getElementById('sheet-body').scrollTop = 0;
+  buildDemoCards(d);
   sheet.classList.add('open');
 }
-function closeSheet() { sheet.classList.remove('open'); }
+function closeSheet() { sheet.classList.remove('open'); stopDemoCards(); }
 document.getElementById('sheet-close').addEventListener('click', () => select(null));
+
+// ---- exercise demos ----
+function animForWorkout(name) {
+  const n = name.toLowerCase().replace(/\(.*?\)/g, '').trim();
+  const has = (...words) => words.every(w => n.includes(w));
+  if (has('alternating') && has('curl')) return 'Alternating Curl';
+  if (has('curl')) return 'Biceps Curl';
+  if (has('overhead') && has('press')) return 'Overhead Press';
+  if (has('lateral') && has('raise')) return 'Lateral Raise';
+  if (has('squat')) return 'Squat';
+  if (has('deadlift')) return 'Deadlift';
+  if (has('bent') && has('row')) return 'Bent-Over Row';
+  if (has('calf') && has('raise')) return 'Standing Calf Raise';
+  if (has('triceps') && has('extension')) return 'Overhead Triceps Extension';
+  if (has('overhead') && has('triceps')) return 'Overhead Triceps Extension';
+  if (has('shrug')) return 'Shrug';
+  return null;
+}
+
+const activeDemos = [];
+function demoRenderLoop() {
+  if (!activeDemos.length) return;
+  for (const d of activeDemos) d.renderer.render(d.scene, d.camera);
+  requestAnimationFrame(demoRenderLoop);
+}
+function trackDemo(entry) {
+  activeDemos.push(entry);
+  if (activeDemos.length === 1) requestAnimationFrame(demoRenderLoop);
+}
+function untrackDemo(entry) {
+  const i = activeDemos.indexOf(entry);
+  if (i >= 0) activeDemos.splice(i, 1);
+  try { entry.stop(); } catch (e) {}
+  try { entry.renderer.dispose(); } catch (e) {}
+}
+
+function makeFigureScene(canvas, w, h) {
+  const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  r.setSize(w, h, false);
+  const sc = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(30, w / h, 0.1, 20);
+  cam.position.set(0.9, 1.05, 2.6);
+  cam.lookAt(0, 0.85, 0);
+  sc.add(new THREE.HemisphereLight(0xffffff, 0x2a3440, 1.1));
+  const key = new THREE.DirectionalLight(0xffffff, 1.2);
+  key.position.set(2, 3, 2);
+  sc.add(key);
+  const fig = createExerciseFigure(THREE);
+  sc.add(fig.group);
+  return { renderer: r, scene: sc, camera: cam, fig };
+}
+
+let cardCleanups = [];
+function stopDemoCards() {
+  cardCleanups.forEach(fn => { try { fn(); } catch (e) {} });
+  cardCleanups = [];
+}
+
+function buildDemoCards(d) {
+  stopDemoCards();
+  const row = document.getElementById('ex-row');
+  row.innerHTML = '';
+  const seen = new Set();
+  const demos = [];
+  for (const w of d.workouts) {
+    const key = animForWorkout(w.name);
+    if (key && EXERCISE_ANIMS[key] && !seen.has(key)) { seen.add(key); demos.push({ name: w.name, key }); }
+  }
+  const wrap = document.getElementById('ex-demos');
+  if (!demos.length) { wrap.classList.remove('has-demos'); return; }
+  wrap.classList.add('has-demos');
+  for (const dm of demos) {
+    const card = document.createElement('div');
+    card.className = 'excard';
+    const label = document.createElement('div');
+    label.className = 'excard-name';
+    label.textContent = dm.name;
+    const canvas = document.createElement('canvas');
+    canvas.width = 208; canvas.height = 208;
+    card.appendChild(canvas);
+    card.appendChild(label);
+    row.appendChild(card);
+    try {
+      const built = makeFigureScene(canvas, 104, 104);
+      const stop = playAnimation(built.fig, EXERCISE_ANIMS[dm.key]);
+      const entry = { renderer: built.renderer, scene: built.scene, camera: built.camera, stop };
+      trackDemo(entry);
+      cardCleanups.push(() => untrackDemo(entry));
+    } catch (e) { console.warn('demo card failed:', dm.key, e); }
+    card.addEventListener('click', () => openExerciseDetail(dm.name, dm.key));
+  }
+}
+
+let detailEntry = null;
+function openExerciseDetail(name, key) {
+  const a = EXERCISE_ANIMS[key];
+  if (!a) return;
+  document.getElementById('exd-title').textContent = name;
+  document.getElementById('exd-prep').textContent = a.preparation;
+  document.getElementById('exd-exec').textContent = a.execution;
+  document.getElementById('ex-detail').classList.add('open');
+  const canvas = document.getElementById('exd-canvas');
+  const w = canvas.clientWidth || window.innerWidth;
+  const h = 320;
+  canvas.width = Math.round(w * Math.min(window.devicePixelRatio, 2));
+  canvas.height = Math.round(h * Math.min(window.devicePixelRatio, 2));
+  try {
+    const built = makeFigureScene(canvas, w, h);
+    built.camera.position.set(0.4, 1.0, 3.0);
+    built.camera.lookAt(0, 0.85, 0);
+    const stop = playAnimation(built.fig, a);
+    detailEntry = { renderer: built.renderer, scene: built.scene, camera: built.camera, stop };
+    trackDemo(detailEntry);
+  } catch (e) { console.warn('detail demo failed:', key, e); }
+}
+function closeExerciseDetail() {
+  document.getElementById('ex-detail').classList.remove('open');
+  if (detailEntry) { untrackDemo(detailEntry); detailEntry = null; }
+}
+document.getElementById('exd-back').addEventListener('click', closeExerciseDetail);
 
 // ---- muscle list ----
 const overlay = document.getElementById('list-overlay');
