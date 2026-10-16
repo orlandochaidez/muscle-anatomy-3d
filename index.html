@@ -545,20 +545,34 @@ const WORKOUT_ANIM_OVERRIDES = {
   "clamshells": "Standing Hip Abduction",
   "clamshells with band": "Standing Hip Abduction",
   "close-grip cable rows": "Bent-Over Row",
+  "close-grip push-ups": "Push-Ups",
   "compound leg work": "Squat",
+  "crunches": "Crunches",
+  "bicycle crunches": "Bicycle Crunches",
+  "reverse crunches": "Reverse Crunches",
+  "russian twists": "Russian Twists",
+  "dead bugs": "Dead Bugs",
   "dead hangs": "Pull-Up",
   "dead hangs with deep breathing": "Pull-Up",
+  "diamond push-ups": "Push-Ups",
   "empty-can raises": "Lateral Raise",
   "farmer's carries": "Shrug",
   "fire hydrants": "Standing Hip Abduction",
+  "glute bridges": "Glute Bridges",
+  "single-leg glute bridge": "Glute Bridges",
+  "hip thrusts": "Glute Bridges",
   "glute-ham raises": "Nordic Curl",
   "good mornings": "Romanian Deadlift",
+  "hanging leg raises": "Lying Leg Raises",
+  "hanging or lying leg raises": "Lying Leg Raises",
   "heavy farmer's carries": "Shrug",
   "lat pulldown": "Pull-Up",
   "lateral band walks": "Standing Hip Abduction",
   "leg press": "Squat",
   "loaded carries": "Shrug",
   "overhead dumbbell extension": "Overhead Triceps Extension",
+  "push-ups": "Push-Ups",
+  "scapular push-ups": "Push-Ups",
   "scaption raises": "Lateral Raise",
   "seated cable rows": "Bent-Over Row",
   "step-ups": "Lunge",
@@ -624,9 +638,11 @@ function makeFigureScene(canvas, w, h, view, anim) {
   // per-exercise camera overrides (e.g. overhead moves need a wider frame)
   const dist = (anim && anim.camDist) || 3.0;
   const lookY = (anim && anim.camY) || 0.85;
-  if (anim && anim.prone) {
-    cam.position.set(3.2, 0.9, 0);
-    cam.lookAt(0, 0.45, 0);
+  if (anim && (anim.prone || anim.supine)) {
+    const dist = (anim && anim.camDist) || 3.2;
+    const lookY = (anim && anim.camY) || 0.45;
+    cam.position.set(dist, 0.9, 0);
+    cam.lookAt(0, lookY, 0);
   }
   else if (view === 'front') { cam.position.set(0, lookY + 0.1, dist); cam.lookAt(0, lookY, 0); }
   else if (view === 'side') { cam.position.set(dist, lookY + 0.1, 0.2); cam.lookAt(0, lookY, 0); }
