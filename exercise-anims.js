@@ -469,7 +469,7 @@ export const EXERCISE_ANIMS = {
     tempo: 2.4,
     view: "side",
     prone: true,
-    rootY: [0, -0.28],
+    rootY: [-0.12, -0.25],
     highlight: ['torso', 'upperArmL', 'upperArmR'],
     preparation: "Start in a plank position with hands under your shoulders and body in a straight line.",
     execution: "Lower your body toward the ground by bending your elbows. Push back up to the starting position.",
@@ -479,10 +479,12 @@ export const EXERCISE_ANIMS = {
       kneeL: { flex: [0, 5] },
       kneeR: { flex: [0, 5] },
       spine: { flex: [0, 0] },
-      shoulderL: { flex: [0, 0], abd: [45, 45] },
-      shoulderR: { flex: [0, 0], abd: [-45, -45] },
-      elbowL: { flex: [10, 95] },
-      elbowR: { flex: [10, 95] }
+      shoulderL: { flex: [0, -12], abd: [45, 45] },
+      shoulderR: { flex: [0, -12], abd: [-45, -45] },
+      elbowL: { flex: [10, 85] },
+      elbowR: { flex: [10, 85] },
+      wristL: { flex: [90, 90] },
+      wristR: { flex: [90, 90] }
     }
   },
   "Lying Leg Raises": {
