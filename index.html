@@ -574,6 +574,16 @@ const WORKOUT_ANIM_OVERRIDES = {
   "overhead dumbbell extension": "Overhead Triceps Extension",
   "push-ups": "Push-Ups",
   "scapular push-ups": "Push-Ups",
+  "overhead lat stretch": "Overhead Lat Stretch",
+  "child's pose lat stretch": "Child's Pose Lat Stretch",
+  "child's pose": "Child's Pose",
+  "cat-cow": "Cat-Cow",
+  "cross-body arm stretch": "Cross-Body Arm Stretch",
+  "thread the needle": "Thread the Needle",
+  "doorway chest opener": "Doorway Chest Opener",
+  "eagle arms": "Eagle Arms",
+  "child's pose side bend": "Child's Pose Side Bend",
+  "deep breathing expansion": "Deep Breathing Expansion",
   "scaption raises": "Lateral Raise",
   "seated cable rows": "Bent-Over Row",
   "step-ups": "Lunge",
@@ -678,6 +688,10 @@ function buildDemoCards(d) {
   for (const w of d.workouts) {
     const key = animForWorkout(w.name);
     if (key && EXERCISE_ANIMS[key] && !seen.has(key)) { seen.add(key); demos.push({ name: w.name, key }); }
+  }
+  for (const s of (d.stretches || [])) {
+    const key = animForWorkout(s.name);
+    if (key && EXERCISE_ANIMS[key] && !seen.has(key)) { seen.add(key); demos.push({ name: s.name, key }); }
   }
   const wrap = document.getElementById('ex-demos');
   if (!demos.length) { wrap.classList.remove('has-demos'); return; }
