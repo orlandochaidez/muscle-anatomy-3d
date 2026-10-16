@@ -538,8 +538,38 @@ function closeSheet() { sheet.classList.remove('open'); stopDemoCards(); }
 document.getElementById('sheet-close').addEventListener('click', () => select(null));
 
 // ---- exercise demos ----
+// Exact workout-name -> animation overrides. Checked before the keyword rules
+// below so each of the 120 workout names gets its best animation.
+const WORKOUT_ANIM_OVERRIDES = {
+  "banded clamshells": "Standing Hip Abduction",
+  "chin-ups": "Pull-Up",
+  "clamshells": "Standing Hip Abduction",
+  "clamshells with band": "Standing Hip Abduction",
+  "close-grip cable rows": "Bent-Over Row",
+  "compound leg work": "Squat",
+  "dead hangs": "Pull-Up",
+  "dead hangs with deep breathing": "Pull-Up",
+  "empty-can raises": "Lateral Raise",
+  "farmer's carries": "Shrug",
+  "fire hydrants": "Standing Hip Abduction",
+  "glute-ham raises": "Nordic Curl",
+  "good mornings": "Romanian Deadlift",
+  "heavy farmer's carries": "Shrug",
+  "lat pulldown": "Pull-Up",
+  "lateral band walks": "Standing Hip Abduction",
+  "leg press": "Squat",
+  "loaded carries": "Shrug",
+  "overhead dumbbell extension": "Overhead Triceps Extension",
+  "scaption raises": "Lateral Raise",
+  "seated cable rows": "Bent-Over Row",
+  "step-ups": "Lunge",
+  "straight-arm pulldowns": "Pull-Up",
+  "superman holds": "Standing Back Extension",
+  "toe raises": "Standing Calf Raise"
+};
 function animForWorkout(name) {
   const n = name.toLowerCase().replace(/\(.*?\)/g, '').trim();
+  if (WORKOUT_ANIM_OVERRIDES[n]) return WORKOUT_ANIM_OVERRIDES[n];
   const has = (...words) => words.every(w => n.includes(w));
   if (has('alternating') && has('curl')) return 'Alternating Curl';
   if (has('nordic')) return 'Nordic Curl';
