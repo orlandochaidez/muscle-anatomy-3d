@@ -630,5 +630,273 @@ const MUSCLE_DATA = {
       { name: "Toe raises", how: "Stand with your back against a wall, heels on the floor, and lift your toes toward your shins. 3 sets of 15-20." },
       { name: "Heel walks", how: "Walk on your heels with toes lifted for 30-60 seconds. Simple and surprisingly tough." }
     ]
-  }
+  },
+  pectoralis_minor: {
+    name: "Pectoralis Minor",
+    region: "Chest",
+    layer: "deep",
+    function: "The small chest muscle hiding under the pec major, running from ribs to shoulder blade. Pulls the shoulder down and forward — tight in desk workers, which rounds the shoulders.",
+    stretches: [
+      { name: "Deep doorway stretch", how: "Forearm on a doorframe with your elbow slightly below shoulder height, step through and lean forward. To hit the minor, keep the elbow low. Hold 30 seconds per side." },
+      { name: "Foam roller chest opener", how: "Lie with a foam roller lengthwise along your spine, arms out to the sides, and let gravity open your chest for 60 seconds." }
+    ],
+    workouts: [
+      { name: "Dips (leaning forward)", how: "On parallel bars, lean your torso forward as you dip to shift emphasis onto the lower chest and pec minor. 3 sets of 8-12." },
+      { name: "Incline dumbbell press", how: "Set the bench to 30 degrees and press — the incline angle recruits the pec minor along with the upper chest. 3 sets of 8-12." }
+    ]
+  },
+  subscapularis: {
+    name: "Subscapularis",
+    region: "Shoulders",
+    layer: "deep",
+    function: "The fourth and final rotator cuff muscle, sitting on the front of the shoulder blade. Rotates the arm inward — now your cuff set is complete.",
+    stretches: [
+      { name: "Doorway external-rotation stretch", how: "Stand in a doorway with your elbow bent 90 degrees at your side, forearm across your body, and gently rotate outward against the frame. Hold 30 seconds per side." },
+      { name: "Cross-body posterior stretch", how: "Pull one arm across your chest at shoulder height to open the front of the shoulder. Hold 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Band internal rotation", how: "Elbow pinned to your side, pull a band inward across your body by rotating the forearm. The direct subscap builder. 3 sets of 15 per side." },
+      { name: "Cable internal rotation", how: "Light weight, elbow at your side, rotate the handle inward across your torso with control. 3 sets of 12 per side." }
+    ]
+  },
+  piriformis: {
+    name: "Piriformis",
+    region: "Glutes",
+    layer: "deep",
+    function: "A small deep butt muscle running over the sciatic nerve. When it gets tight it can mimic sciatica — the infamous 'pain in the butt' muscle.",
+    stretches: [
+      { name: "Figure-4 stretch", how: "Lie on your back, cross your right ankle over your left knee and pull the left thigh toward your chest. For a deeper hit, keep the back flat. Hold 45 seconds per side." },
+      { name: "Pigeon pose", how: "Front shin across your body, back leg long behind you, fold forward. The gold-standard piriformis stretch. 60 seconds per side." }
+    ],
+    workouts: [
+      { name: "Clamshells with band", how: "Mini band above the knees, side-lying, open the top knee against resistance. Directly trains the piriformis and deep rotators. 3 sets of 15 per side." },
+      { name: "Seated hip external rotation", how: "Sit tall with a band around your knees, press knees outward and hold 2 seconds. 3 sets of 15." }
+    ]
+  },
+  iliacus: {
+    name: "Iliacus",
+    region: "Core",
+    layer: "deep",
+    function: "Lines the inside of your hip bone and joins the psoas to form the iliopsoas — your most powerful hip flexor. Shortens every hour you sit.",
+    stretches: [
+      { name: "Kneeling hip flexor stretch", how: "Half-kneeling, tuck your pelvis and shift forward until the front of the hip stretches deeply. Hold 30 seconds per side." },
+      { name: "Couch stretch", how: "Back knee up against a wall, front foot flat, drive the hips forward tall. 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Hanging leg raises", how: "Hang from a bar and raise straight legs to 90 degrees with control. The ultimate iliopsoas builder. 3 sets of 8-10." },
+      { name: "Reverse crunches", how: "Lying down, curl your hips off the floor bringing knees toward your chest. 3 sets of 12-15." }
+    ]
+  },
+  serratus_posterior: {
+    name: "Serratus Posterior",
+    region: "Back",
+    layer: "deep",
+    function: "Thin sheets of muscle over the ribs, top and bottom. They help lift the ribs when you breathe deeply — the breathing muscles of the back.",
+    stretches: [
+      { name: "Deep breathing expansion", how: "Sit tall, hands on your lower ribs, inhale deeply trying to push your hands outward. 10 slow breaths." },
+      { name: "Thread the needle", how: "On all fours, slide one arm under your body and rest the shoulder down, rotating the mid-back. 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Dead hangs with deep breathing", how: "Hang from a bar and take 10 slow, maximal breaths, expanding the ribcage fully. 3 rounds." },
+      { name: "Prone breathing press-ups", how: "Lie face down, hands under shoulders, press your chest up while inhaling deeply into the back. 10 reps." }
+    ]
+  },
+  splenius_capitis: {
+    name: "Splenius Capitis",
+    region: "Neck",
+    layer: "deep",
+    function: "Deep neck muscle running from the upper back to the skull. Extends and turns the head — works overtime when you crane over a phone.",
+    stretches: [
+      { name: "Chin-tuck stretch", how: "Sit tall, tuck your chin straight back making a double chin, and gently press with your fingers. Hold 20 seconds, 5 reps." },
+      { name: "Ear-to-shoulder with rotation", how: "Tilt your ear to your shoulder, then turn your nose slightly upward for a deeper stretch. 20 seconds per side." }
+    ],
+    workouts: [
+      { name: "Neck extension isometric", how: "Interlace fingers behind your head and gently push your head back into your hands. Hold 10 seconds, 5 reps." },
+      { name: "Prone head lifts", how: "Lie face down, lift your forehead an inch off the floor and hold 10 seconds. 8 reps." }
+    ]
+  },
+  splenius_cervicis: {
+    name: "Splenius Cervicis",
+    region: "Neck",
+    layer: "deep",
+    function: "Runs from the mid-back up to the neck vertebrae. Partners with splenius capitis to extend the neck and keep your head from drooping forward.",
+    stretches: [
+      { name: "Seated neck extension stretch", how: "Sit tall, clasp hands behind your head and gently let the head tip back, opening the front of the neck. Hold 20 seconds." },
+      { name: "Side-bend stretch", how: "Tilt your right ear toward your right shoulder and hold, feeling the left side of the neck lengthen. 20 seconds per side." }
+    ],
+    workouts: [
+      { name: "Isometric side-bends", how: "Place your palm on the side of your head and push your head into your hand without moving. 10 seconds per side, 3 rounds." },
+      { name: "Chin tucks", how: "Pull your chin straight back, hold 5 seconds. Strengthens all the deep neck flexors and extensors. 10 reps." }
+    ]
+  },
+  levator_scapulae: {
+    name: "Levator Scapulae",
+    region: "Neck",
+    layer: "deep",
+    function: "Connects the neck to the top of the shoulder blade — literally the 'shoulder shrugger'. The muscle behind that stiff-neck feeling after stress.",
+    stretches: [
+      { name: "Levator stretch", how: "Sit tall, turn your nose 45 degrees toward your armpit, then gently tuck your chin down with your hand. You'll feel it deep in the side of the neck. 30 seconds per side." },
+      { name: "Doorframe lean", how: "Stand in a doorway, place your forearm overhead on the frame and lean away to open the side of the neck. 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Shrugs with pause", how: "Dumbbell shrugs, but hold the top for 3 full seconds to make the levator work. 3 sets of 12." },
+      { name: "Neck side-bend isometric", how: "Hand on the side of your head, push into it without letting your head move. 10 seconds per side." }
+    ]
+  },
+  obturator_externus: {
+    name: "Obturator Externus",
+    region: "Glutes",
+    layer: "deep",
+    function: "Deep hip rotator on the outer pelvis. Works with the piriformis to stabilize the hip every time you stand on one leg.",
+    stretches: [
+      { name: "Figure-4 stretch", how: "On your back, ankle over opposite knee, pull the bottom thigh in. 45 seconds per side." },
+      { name: "90-90 hip stretch", how: "Seated with both knees bent at 90 degrees (one leg front, one side), lean forward over the front shin. 45 seconds per side." }
+    ],
+    workouts: [
+      { name: "Banded clamshells", how: "Mini band above knees, open the top knee slowly against resistance. 3 sets of 15 per side." },
+      { name: "Single-leg glute bridge", how: "Drive through one heel, hips high, 2-second squeeze at the top. 3 sets of 10 per side." }
+    ]
+  },
+  obturator_internus: {
+    name: "Obturator Internus",
+    region: "Glutes",
+    layer: "deep",
+    function: "Lines the inner pelvis and rotates the hip outward. A deep stabilizer that keeps the hip joint centered when you move.",
+    stretches: [
+      { name: "Deep squat hold", how: "Sink into a deep bodyweight squat with knees pushed out, holding 30-45 seconds. Opens the entire deep hip complex." },
+      { name: "Pigeon pose", how: "Front shin across, back leg extended, fold forward. 60 seconds per side." }
+    ],
+    workouts: [
+      { name: "Fire hydrants", how: "On all fours, lift a bent knee out to the side without rotating the hips. 3 sets of 12 per side." },
+      { name: "Lateral band walks", how: "Band around ankles, quarter squat, step sideways with tension. 10 steps each way, 3 rounds." }
+    ]
+  },
+  gemellus: {
+    name: "Gemellus",
+    region: "Glutes",
+    layer: "deep",
+    function: "Twin small muscles (superior and inferior) flanking the obturator internus. Fine-tune hip rotation and stability deep in the butt.",
+    stretches: [
+      { name: "Figure-4 stretch", how: "Classic: ankle over knee, pull the thigh in. Hold 45 seconds per side." },
+      { name: "Seated spinal twist", how: "Seated, cross one leg over, hug the knee and twist toward it. 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Clamshells", how: "Slow and controlled, 3-second holds at the top. 3 sets of 12 per side." },
+      { name: "Standing hip rotations", how: "On one leg, slowly rotate the free hip in big circles. 10 each direction per side." }
+    ]
+  },
+  scalenus_anterior: {
+    name: "Scalenus Anterior",
+    region: "Neck",
+    layer: "deep",
+    function: "Front-most of the scalene trio, running from neck to first rib. Lifts the rib when you breathe hard and side-bends the neck.",
+    stretches: [
+      { name: "Scalene stretch", how: "Sit on one hand, tilt your ear to the opposite shoulder and look slightly up. 20 seconds per side." },
+      { name: "Chin-tuck side tilt", how: "Tuck your chin, then tilt your ear toward your shoulder. 20 seconds per side." }
+    ],
+    workouts: [
+      { name: "Neck side-bend isometric", how: "Palm on the side of your head, push without moving. 10 seconds per side, 3 rounds." },
+      { name: "Deep breathing sets", how: "10 slow maximal inhales, focusing on expanding the upper ribs where the scalenes attach." }
+    ]
+  },
+  scalenus_medius: {
+    name: "Scalenus Medius",
+    region: "Neck",
+    layer: "deep",
+    function: "The largest scalene, behind the anterior. A key breathing muscle that lifts the upper ribs — works hard during cardio.",
+    stretches: [
+      { name: "Overhead side stretch", how: "Interlace fingers overhead, lean to one side until the side of the neck stretches. 20 seconds per side." },
+      { name: "Ear-to-shoulder hold", how: "Simple and effective: ear toward shoulder, hold 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Loaded carries", how: "Heavy farmer's carries force the scalenes to stabilize the neck under load. 3 rounds of 40 seconds." },
+      { name: "Neck flexion isometric", how: "Palm on forehead, push head forward into hand without moving. 10 seconds, 3 rounds." }
+    ]
+  },
+  coracobrachialis: {
+    name: "Coracobrachialis",
+    region: "Arms",
+    layer: "surface",
+    function: "Small muscle on the inner upper arm, tucked beside the biceps. Helps pull the arm forward and across the body.",
+    stretches: [
+      { name: "Doorway chest-and-arm stretch", how: "Forearm on a doorframe at shoulder height, step through and turn slightly away. 30 seconds per side." },
+      { name: "Behind-back clasp", how: "Clasp hands behind your back, straighten the arms and lift gently. 30 seconds." }
+    ],
+    workouts: [
+      { name: "Close-grip cable rows", how: "Pull to your lower chest with elbows tucked — the inner-arm angle hits the coracobrachialis. 3 sets of 10-12." },
+      { name: "Cross-body curls", how: "Curl dumbbells up across toward the opposite shoulder. 3 sets of 10 per side." }
+    ]
+  },
+  anconeus: {
+    name: "Anconeus",
+    region: "Arms",
+    layer: "surface",
+    function: "Tiny triangle on the back of the elbow. Assists the triceps in straightening the arm — small but mighty in lockout strength.",
+    stretches: [
+      { name: "Overhead triceps stretch", how: "One arm overhead, bend the elbow and gently press it down with the other hand. 30 seconds per side." },
+      { name: "Wall triceps stretch", how: "Place your elbow overhead against a wall and lean in. 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Triceps pushdowns", how: "Cable pushdowns with a full lockout squeeze at the bottom. 3 sets of 12-15." },
+      { name: "Diamond push-ups", how: "Hands in a diamond under your chest — the lockout hammers the anconeus. 3 sets to near-failure." }
+    ]
+  },
+  supinator: {
+    name: "Supinator",
+    region: "Arms",
+    layer: "surface",
+    function: "Wraps around the top of the forearm and turns your palm face-up — every doorknob turn and screwdriver twist runs through it.",
+    stretches: [
+      { name: "Palm-down wrist stretch", how: "Arm straight, palm down, gently press the back of your hand downward with the other hand. 30 seconds per side." },
+      { name: "Reverse prayer", how: "Backs of hands together, fingers pointing down. Hold 30 seconds." }
+    ],
+    workouts: [
+      { name: "Dumbbell supination", how: "Elbow pinned at 90 degrees, hold a dumbbell vertical and slowly rotate the palm face-up. 3 sets of 12 per side." },
+      { name: "Hammer curls to supination", how: "Curl with a neutral grip, then rotate palms up at the top. 3 sets of 10." }
+    ]
+  },
+  flexor_digitorum_superficialis: {
+    name: "Flexor Digitorum Superficialis",
+    region: "Arms",
+    layer: "surface",
+    function: "The main finger-flexing muscle of the forearm. Every grip — barbells, rock walls, grocery bags — runs through it.",
+    stretches: [
+      { name: "Finger extension stretch", how: "Gently pull each finger back toward your wrist, holding 10 seconds each." },
+      { name: "Prayer stretch", how: "Palms together, fingers up, lower your hands while keeping palms pressed. Hold 30 seconds." }
+    ],
+    workouts: [
+      { name: "Heavy farmer's carries", how: "The ultimate grip builder — heavy dumbbells, 40-60 second walks. 3 rounds." },
+      { name: "Wrist curls", how: "Palms up, curl light dumbbells with the wrists only. 3 sets of 15-20." },
+      { name: "Towel pull-up hangs", how: "Drape towels over a bar and hang or pull from them. Grip strength explodes. 3 sets to failure." }
+    ]
+  },
+  palmaris_longus: {
+    name: "Palmaris Longus",
+    region: "Arms",
+    layer: "surface",
+    function: "The thin tendon-muscle down the middle of your inner forearm (about 15% of people don't even have it). Tenses the palm when you grip.",
+    stretches: [
+      { name: "Wrist flexor stretch", how: "Arm straight, palm up, gently pull fingers back with the other hand. 30 seconds per side." },
+      { name: "Prayer stretch", how: "Palms together in front of your chest, lower hands slowly. Hold 30 seconds." }
+    ],
+    workouts: [
+      { name: "Wrist curls", how: "Light dumbbells, palms up, curl with the wrists. 3 sets of 15." },
+      { name: "Grip crush holds", how: "Squeeze a grip trainer or tennis ball as hard as you can for 20 seconds. 3 rounds per hand." }
+    ]
+  },
+  fibularis_brevis: {
+    name: "Fibularis Brevis",
+    region: "Legs",
+    layer: "surface",
+    function: "Shorter partner of the fibularis longus on the outer shin. Everts the foot and braces the ankle against rolling.",
+    stretches: [
+      { name: "Kneeling shin stretch", how: "Tops of feet flat on the floor, sit back gently. Hold 30 seconds." },
+      { name: "Ankle alphabet", how: "Trace the alphabet in the air with your big toe to mobilize every ankle direction. 1 round per foot." }
+    ],
+    workouts: [
+      { name: "Banded eversion", how: "Band around the forefoot, turn the sole outward against resistance. 3 sets of 15 per foot." },
+      { name: "Single-leg balance", how: "30-60 seconds per foot, progress to eyes closed or a wobble surface. 3 rounds." }
+    ]
+  },
+
 };
