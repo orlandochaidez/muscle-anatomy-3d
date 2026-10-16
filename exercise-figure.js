@@ -133,16 +133,19 @@ export function playAnimation(fig, animData) {
 
   // optional root motions (added for calf raise + shrug):
   // animData.rootY = [min,max] meters, bobs the whole figure vertically
+  // animData.rootZ = [min,max] meters, shifts the whole figure forward/back
   // animData.lift  = [min,max] meters, raises/lowers the shoulder pivots
   // animData.prone = true — lays the figure face-down (for floor exercises);
   //   group is rotated +90° about X (head toward +Z) and lifted to y=0.55.
   // animData.supine = true — lays the figure face-up (for ab exercises);
   //   group is rotated -90° about X (head toward +Z) and lifted to y=0.55.
   const rootYRange = animData.rootY;
+  const rootZRange = animData.rootZ;
   const liftRange = animData.lift;
   const prone = !!animData.prone;
   const supine = !!animData.supine;
   const baseY = (prone || supine) ? 0.55 : 0;
+  const baseZ = prone ? -0.82 : supine ? 0.82 : 0;
   if (prone) {
     fig.group.rotation.x = Math.PI / 2;
     fig.group.position.set(0, baseY, -0.82);
@@ -218,6 +221,10 @@ export function playAnimation(fig, animData) {
     if (rootYRange) {
       const [mn, mx] = rootYRange;
       fig.group.position.y = baseY + mn + (mx - mn) * tR;
+    }
+    if (rootZRange) {
+      const [mn, mx] = rootZRange;
+      fig.group.position.z = baseZ + mn + (mx - mn) * tR;
     }
     if (liftRange) {
       const [mn, mx] = liftRange;
