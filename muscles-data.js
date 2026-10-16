@@ -43,7 +43,8 @@ const MUSCLE_DATA = {
     workouts: [
       { name: "Overhead press", how: "Press dumbbells from shoulder height straight overhead until arms are extended, then lower with control. 3 sets of 8-12." },
       { name: "Lateral raises", how: "With light dumbbells at your sides, raise your arms out to shoulder height with a slight elbow bend, then lower slowly. 3 sets of 12-15." },
-      { name: "Front raises", how: "Raise one or both dumbbells straight in front of you to shoulder height, then lower slowly. 3 sets of 12." }
+      { name: "Front raises", how: "Raise one or both dumbbells straight in front of you to shoulder height, then lower slowly. 3 sets of 12." },
+      { name: "Push-ups", how: "Hands under shoulders, body in a straight line, lower your chest to just above the floor and press back up. 3 sets to near-failure." }
     ]
   },
   pectoralis_major: {
