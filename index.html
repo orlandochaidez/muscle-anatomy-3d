@@ -326,7 +326,7 @@ scene.add(fill);
 const muscleMeshes = [];
 let selected = null;
 let hovered = null;
-const BASE_COLOR = new THREE.Color(0xa83c2b);
+const BASE_COLOR = new THREE.Color(0xe8917d);
 const HOVER_EMISSIVE = new THREE.Color(0x551a10);
 const SELECT_EMISSIVE = new THREE.Color(0xff5a2a);
 
@@ -355,7 +355,7 @@ function loadGLB(url) {
       root.traverse((obj) => {
         if (obj.isMesh) {
           obj.material = new THREE.MeshStandardMaterial({
-            color: BASE_COLOR.clone(), roughness: 0.5, metalness: 0.08
+            color: BASE_COLOR.clone(), roughness: 1.0, metalness: 0.0
           });
           obj.userData.key = obj.name;
           muscleMeshes.push(obj);
