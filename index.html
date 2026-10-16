@@ -304,7 +304,8 @@ const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerH
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
-controls.enablePan = false;
+controls.enablePan = true;
+controls.zoomToCursor = true;
 controls.minDistance = 0.35;
 controls.maxDistance = 6;
 controls.autoRotateSpeed = 1.6;
@@ -500,7 +501,7 @@ renderer.domElement.addEventListener('pointerdown', (e) => {
 renderer.domElement.addEventListener('pointerup', (e) => {
   const moved = Math.hypot(e.clientX - downX, e.clientY - downY);
   if (moved < 10 && performance.now() - downT < 450) {
-    select(pick(e.clientX, e.clientY), false);
+    select(pick(e.clientX, e.clientY), true);
   }
 });
 // hover highlight (desktop)
