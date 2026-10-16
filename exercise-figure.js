@@ -5,6 +5,8 @@
 //   on right, positive rotation.z moves the arm inward — supply negative values for outward
 // elbow.flex    (rotation.x): positive = forearm swings forward/up (elbow flexion)
 // hip.flex      (rotation.x): positive = thigh swings forward (hip flexion)
+// hip.abd       (rotation.z): positive = thigh abducts outward on left;
+//   on right, positive rotation.z moves the thigh inward — supply negative values for outward
 // knee.flex     (rotation.x): positive = knee bends (shin swings backward)
 // spine.flex    (rotation.x): positive = torso bends forward
 
@@ -73,7 +75,7 @@ export function createExerciseFigure(THREE) {
     const hip = new Object3D();
     hip.position.set(sign * 0.10, 0, 0);
     hips.add(hip);
-    joints['hip' + side] = { flex: hip };
+    joints['hip' + side] = { flex: hip, abd: hip };
 
     const thigh = new Mesh(new CapsuleGeometry(0.055, 0.42, 5, 8), baseMat.clone());
     thigh.position.y = -0.21;
@@ -109,8 +111,8 @@ export function playAnimation(fig, animData) {
     shoulderR: { flex: 0, abd: -8 },
     elbowL: { flex: 10 },
     elbowR: { flex: 10 },
-    hipL: { flex: 0 },
-    hipR: { flex: 0 },
+    hipL: { flex: 0, abd: 0 },
+    hipR: { flex: 0, abd: 0 },
     kneeL: { flex: 5 },
     kneeR: { flex: 5 },
     spine: { flex: 0 }
