@@ -9,12 +9,16 @@
 //   on right, positive rotation.z moves the thigh inward — supply negative values for outward
 // knee.flex     (rotation.x): positive = knee bends (shin swings backward)
 // spine.flex    (rotation.x): positive = torso bends forward
+// wrist.flex    (rotation.x): positive = wrist flexes (palm toward forearm front)
+// wrist.twist   (rotation.y): rotation about the forearm's long axis.
+//   twist 0 = palm facing forward (+Z). Left: +90 = palm inward (neutral);
+//   Right: -90 = palm inward (neutral). Negative/positive beyond that = outward.
 
 export function createExerciseFigure(THREE) {
   const { Group, Mesh, CapsuleGeometry, SphereGeometry, BoxGeometry,
           MeshStandardMaterial, Object3D } = THREE;
   const DEG = Math.PI / 180;
-  const bodyColor = 0x6b7c93;
+  const bodyColor = 0x9c3d34;
   const group = new Group();
   const joints = {};
   const segments = {};
@@ -60,9 +64,14 @@ export function createExerciseFigure(THREE) {
     elbow.add(fore);
     segments['forearm' + side] = fore;
 
-    const hand = new Mesh(new SphereGeometry(0.048, 10, 8), baseMat.clone());
-    hand.position.y = -0.30;
-    elbow.add(hand);
+    const hand = new Mesh(new BoxGeometry(0.06, 0.11, 0.04), baseMat.clone());
+    hand.position.y = -0.065;
+    const wrist = new Object3D();
+    wrist.position.y = -0.30;
+    elbow.add(wrist);
+    wrist.add(hand);
+    joints['wrist' + side] = { flex: wrist, twist: wrist };
+    segments['hand' + side] = hand;
 
     shoulder.rotation.z = (side === 'L' ? 8 : -8) * DEG;
     elbow.rotation.x = 10 * DEG;
@@ -115,9 +124,11 @@ export function playAnimation(fig, animData) {
     hipR: { flex: 0, abd: 0 },
     kneeL: { flex: 5 },
     kneeR: { flex: 5 },
+    wristL: { flex: 0, twist: 90 },
+    wristR: { flex: 0, twist: -90 },
     spine: { flex: 0 }
   };
-  const highlightColor = 0xe8632a;
+  const highlightColor = 0xffb52e;
   const orig = {};
 
   // optional root motions (added for calf raise + shrug):
@@ -170,6 +181,18 @@ export function playAnimation(fig, animData) {
         j.abd.rotation.z = (mn + (mx - mn) * t) * DEG;
       } else if (j.abd && REST[jName].abd != null) {
         j.abd.rotation.z = REST[jName].abd * DEG;
+      }
+
+      if (j.twist) {
+        const tw = data.twist;
+        if (Array.isArray(tw)) {
+          const [mn, mx] = tw;
+          j.twist.rotation.y = (mn + (mx - mn) * t) * DEG;
+        } else if (typeof tw === 'number') {
+          j.twist.rotation.y = tw * DEG;
+        } else if (REST[jName].twist != null) {
+          j.twist.rotation.y = REST[jName].twist * DEG;
+        }
       }
     }
     // root motions use the unphased wave so the body moves as one
