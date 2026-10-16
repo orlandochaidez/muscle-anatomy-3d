@@ -18,7 +18,7 @@ export function createExerciseFigure(THREE) {
   const { Group, Mesh, CapsuleGeometry, SphereGeometry, BoxGeometry,
           MeshStandardMaterial, Object3D } = THREE;
   const DEG = Math.PI / 180;
-  const bodyColor = 0x9c3d34;
+  const bodyColor = 0xe8917d;
   const group = new Group();
   const joints = {};
   const segments = {};
@@ -31,7 +31,7 @@ export function createExerciseFigure(THREE) {
   hips.add(spine);
   joints.spine = { flex: spine, twist: spine };
 
-  const baseMat = new MeshStandardMaterial({ color: bodyColor, roughness: 0.55, metalness: 0.05 });
+  const baseMat = new MeshStandardMaterial({ color: bodyColor, roughness: 1.0, metalness: 0.0 });
 
   const torso = new Mesh(new CapsuleGeometry(0.13, 0.38, 6, 10), baseMat.clone());
   torso.position.y = 0.24;
