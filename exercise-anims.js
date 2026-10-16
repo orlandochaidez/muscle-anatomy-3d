@@ -64,17 +64,17 @@ export const EXERCISE_ANIMS = {
     tempo: 2.8,
     view: "side",
     highlight: ['thighL', 'thighR', 'shinL', 'shinR', 'torso'],
-    rootY: [-0.35, 0],
+    rootY: [-0.45, 0],
     preparation: "Stand with feet roughly shoulder-width apart, toes slightly out, and arms extended forward for balance.",
-    execution: "Sit the hips back and down, bending the knees to lower until the thighs are near parallel to the ground. Keep the chest up and knees tracking over the toes, then drive through the heels to stand.",
+    execution: "Sit the hips straight down, bending the knees to lower until the thighs are parallel to the ground. Keep the chest up and knees tracking over the toes, then drive through the heels to stand.",
     joints: {
-      hipL: { flex: [0, 75] },
-      hipR: { flex: [0, 75] },
-      kneeL: { flex: [5, 95] },
-      kneeR: { flex: [5, 95] },
-      spine: { flex: [0, 15] },
-      shoulderL: { flex: [0, 45] },
-      shoulderR: { flex: [0, 45] }
+      hipL: { flex: [0, 88] },
+      hipR: { flex: [0, 88] },
+      kneeL: { flex: [5, 108] },
+      kneeR: { flex: [5, 108] },
+      spine: { flex: [0, 32] },
+      shoulderL: { flex: [0, 50] },
+      shoulderR: { flex: [0, 50] }
     }
   },
   "Deadlift": {
@@ -326,6 +326,25 @@ export const EXERCISE_ANIMS = {
       spine: { flex: [8, 68] },
       shoulderL: { flex: [0, 10] },
       shoulderR: { flex: [0, 10] }
+    }
+  },
+  "Lying Leg Curl": {
+    tempo: 2.4,
+    view: "side",
+    prone: true,
+    highlight: ['thighL', 'thighR', 'shinL', 'shinR'],
+    preparation: "Lie face-down with legs extended straight behind you and arms resting at your sides.",
+    execution: "Keeping the thighs pressed to the ground, bend both knees to curl the heels up toward your butt. Squeeze the hamstrings hard at the top, then lower the feet slowly back down.",
+    joints: {
+      hipL: { flex: [0, 5] },
+      hipR: { flex: [0, 5] },
+      kneeL: { flex: [8, 125] },
+      kneeR: { flex: [8, 125] },
+      spine: { flex: [0, 2] },
+      shoulderL: { flex: [0, 5] },
+      shoulderR: { flex: [0, 5] },
+      elbowL: { flex: [10, 15] },
+      elbowR: { flex: [10, 15] }
     }
   }
 };
