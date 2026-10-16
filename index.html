@@ -651,6 +651,12 @@ function makeFigureScene(canvas, w, h, view, anim) {
   const key = new THREE.DirectionalLight(0xffffff, 1.2);
   key.position.set(2, 3, 2);
   sc.add(key);
+  // subtle ground grid so vertical movement (e.g. calf raises) reads clearly
+  const grid = new THREE.GridHelper(4, 20, 0x3b4a5e, 0x223041);
+  grid.position.y = 0;
+  grid.material.transparent = true;
+  grid.material.opacity = 0.5;
+  sc.add(grid);
   const fig = createExerciseFigure(THREE);
   sc.add(fig.group);
   return { renderer: r, scene: sc, camera: cam, fig };
