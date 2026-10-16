@@ -36,6 +36,7 @@ export const EXERCISE_ANIMS = {
   "Overhead Press": {
     tempo: 2.4,
     view: "front",
+    camDist: 4.1, camY: 1.05,
     highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR', 'torso'],
     preparation: "Stand with feet shoulder-width apart, core tight, and elbows bent so the hands start near shoulder height.",
     execution: "Press the arms overhead by extending the elbows and flexing the shoulders until the arms are straight. Lower back to shoulder level under control without excessive lower-back arch.",
@@ -126,6 +127,7 @@ export const EXERCISE_ANIMS = {
   "Overhead Triceps Extension": {
     tempo: 2.3,
     view: "side",
+    camDist: 4.1, camY: 1.05,
     highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR'],
     preparation: "Stand tall and raise both arms fully overhead with the elbows pointing forward and close to the head.",
     execution: "Keeping the upper arms stationary, flex the elbows to lower the hands behind the head. Then extend the elbows to return to the straight overhead position.",
@@ -269,6 +271,7 @@ export const EXERCISE_ANIMS = {
   "Pull-Up": {
     tempo: 2.6,
     view: "front",
+    camDist: 4.1, camY: 1.05,
     highlight: ['upperArmL', 'upperArmR', 'forearmL', 'forearmR', 'torso'],
     lift: [0, 0.08],
     preparation: "Stand with arms extended fully overhead as if gripping a bar, core braced and shoulders set.",
