@@ -105,7 +105,7 @@ export function createExerciseFigure(THREE) {
     foot.position.set(0, -0.44, 0.04);
     knee.add(foot);
 
-    knee.rotation.x = -5 * DEG;
+    knee.rotation.x = 5 * DEG;
   }
   makeLeg('L');
   makeLeg('R');
@@ -134,8 +134,15 @@ export function playAnimation(fig, animData) {
   // optional root motions (added for calf raise + shrug):
   // animData.rootY = [min,max] meters, bobs the whole figure vertically
   // animData.lift  = [min,max] meters, raises/lowers the shoulder pivots
+  // animData.prone = true — lays the figure face-down (for floor exercises);
+  //   group is rotated +90° about X (head toward +Z) and lifted to y=0.55.
   const rootYRange = animData.rootY;
   const liftRange = animData.lift;
+  const prone = !!animData.prone;
+  if (prone) {
+    fig.group.rotation.x = Math.PI / 2;
+    fig.group.position.set(0, 0.55, -0.82);
+  }
   const shoulderBaseY = {};
   for (const s of ['shoulderL', 'shoulderR']) {
     const p = fig.joints[s] && fig.joints[s].flex;
@@ -170,8 +177,9 @@ export function playAnimation(fig, animData) {
       const t = 0.5 + 0.5 * s;
 
       // The torso points UP while limbs point DOWN, so anatomical "flex forward"
-      // needs opposite three.js signs: limbs negate, spine does not.
-      const fwd = (jName === 'spine') ? 1 : -1;
+      // needs opposite three.js signs. Knees are the exception: knee flexion
+      // (heel toward butt) rotates the shin backward, same as the spine's sign.
+      const fwd = (jName === 'spine' || jName === 'kneeL' || jName === 'kneeR') ? 1 : -1;
       if (data.flex && j.flex) {
         const [mn, mx] = data.flex;
         j.flex.rotation.x = fwd * (mn + (mx - mn) * t) * DEG;
@@ -200,7 +208,7 @@ export function playAnimation(fig, animData) {
     }
     // root motions use the unphased wave so the body moves as one
     const tR = 0.5 + 0.5 * Math.sin(wave);
-    if (rootYRange) {
+    if (rootYRange && !prone) {
       const [mn, mx] = rootYRange;
       fig.group.position.y = mn + (mx - mn) * tR;
     }
@@ -223,7 +231,8 @@ export function playAnimation(fig, animData) {
       const m = fig.segments[name];
       if (m && m.material) m.material.color.setHex(orig[name]);
     }
-    fig.group.position.y = 0;
+    fig.group.position.set(0, 0, 0);
+    fig.group.rotation.x = 0;
     for (const s in shoulderBaseY) {
       const p = fig.joints[s].flex;
       if (p) p.position.y = shoulderBaseY[s];
