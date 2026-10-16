@@ -350,7 +350,7 @@ export const EXERCISE_ANIMS = {
       elbowR: { flex: [10, 15] }
     }
   },
-"Crunches": {
+  "Crunches": {
     tempo: 2.0,
     view: "side",
     supine: true,
