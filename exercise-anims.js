@@ -695,5 +695,190 @@ export const EXERCISE_ANIMS = {
     elbowR: { flex: [70, 80] },
     spine: { flex: [-5, 8] }
   }
+},
+"Figure-4 Stretch": {
+  tempo: 3.5,
+  view: "side",
+  supine: true,
+  highlight: ['thighR'],
+  preparation: "Lie on your back and cross one ankle over the opposite knee.",
+  execution: "Gently pull the bottom leg toward your chest to deepen the stretch in the glute. Hold and breathe, then ease the leg back out.",
+  joints: {
+    hipR: { flex: [45, 55], abd: [30, 40] },
+    kneeR: { flex: [90, 100] },
+    hipL: { flex: [70, 85] },
+    kneeL: { flex: [90, 100] },
+    shoulderL: { flex: [20, 30], abd: [8, 10] },
+    shoulderR: { flex: [20, 30], abd: [8, 10] },
+    elbowL: { flex: [80, 90] },
+    elbowR: { flex: [80, 90] }
+  }
+},
+"Standing Quad Stretch": {
+  tempo: 3.0,
+  view: "side",
+  highlight: ['thighR'],
+  preparation: "Stand on one leg and reach back to hold the opposite foot.",
+  execution: "Pull the heel toward your glute while keeping the knees close together. Hold the stretch through the front of the thigh, then slowly release.",
+  joints: {
+    hipL: { flex: [0, 0] },
+    kneeL: { flex: [0, 5] },
+    hipR: { flex: [-5, -15] },
+    kneeR: { flex: [120, 135] },
+    shoulderR: { flex: [10, 15], abd: [8, 10] },
+    elbowR: { flex: [60, 80] },
+    shoulderL: { flex: [5, 10], abd: [20, 30] },
+    elbowL: { flex: [10, 15] },
+    spine: { flex: [0, 5] }
+  }
+},
+"Pigeon Pose": {
+  tempo: 4.0,
+  view: "side",
+  prone: true,
+  highlight: ['thighL'],
+  preparation: "From all fours, bring one shin across the body and extend the back leg behind you.",
+  execution: "Settle the hips and gently fold the torso forward over the front leg. Hold the deep hip and glute stretch, then ease back upright.",
+  rootY: [-0.30, -0.33],
+  joints: {
+    hipL: { flex: [70, 80], abd: [40, 50] },
+    kneeL: { flex: [90, 100] },
+    hipR: { flex: [-15, -20] },
+    kneeR: { flex: [0, 5] },
+    spine: { flex: [10, 25] },
+    shoulderL: { flex: [60, 75], abd: [8, 12] },
+    shoulderR: { flex: [60, 75], abd: [8, 12] },
+    elbowL: { flex: [10, 15] },
+    elbowR: { flex: [10, 15] }
+  }
+},
+"Standing Hamstring Stretch": {
+  tempo: 3.5,
+  view: "side",
+  highlight: ['thighR', 'shinR'],
+  preparation: "Stand with one heel forward on the ground and the opposite leg supporting you.",
+  execution: "Hinge at the hips and reach toward the front toes while keeping that leg straight. Hold the stretch along the back of the thigh, then rise slowly.",
+  joints: {
+    hipR: { flex: [40, 50] },
+    kneeR: { flex: [0, 5] },
+    hipL: { flex: [0, 0] },
+    kneeL: { flex: [0, 5] },
+    spine: { flex: [30, 45] },
+    shoulderL: { flex: [70, 90], abd: [8, 10] },
+    shoulderR: { flex: [70, 90], abd: [8, 10] },
+    elbowL: { flex: [5, 10] },
+    elbowR: { flex: [5, 10] }
+  }
+},
+"Wall Calf Stretch": {
+  tempo: 3.5,
+  view: "side",
+  highlight: ['shinR'],
+  preparation: "Place both hands on a wall and step one leg back with the heel down.",
+  execution: "Lean gently forward while keeping the back knee straight and the heel pressed into the floor. Hold the stretch through the calf, then ease off.",
+  joints: {
+    hipL: { flex: [25, 35] },
+    kneeL: { flex: [30, 40] },
+    hipR: { flex: [-15, -20] },
+    kneeR: { flex: [0, 5] },
+    shoulderL: { flex: [75, 85], abd: [8, 12] },
+    shoulderR: { flex: [75, 85], abd: [8, 12] },
+    elbowL: { flex: [10, 15] },
+    elbowR: { flex: [10, 15] },
+    spine: { flex: [10, 15] }
+  }
+},
+"Butterfly Stretch": {
+  tempo: 3.5,
+  view: "front",
+  highlight: ['thighL', 'thighR'],
+  preparation: "Sit on the floor and bring the soles of your feet together.",
+  execution: "Let the knees drop outward and gently hinge forward from the hips. Hold the stretch through the inner thighs, then sit back upright.",
+  joints: {
+    hipL: { flex: [85, 90], abd: [45, 55] },
+    hipR: { flex: [85, 90], abd: [45, 55] },
+    kneeL: { flex: [95, 105] },
+    kneeR: { flex: [95, 105] },
+    spine: { flex: [5, 15] },
+    shoulderL: { flex: [35, 45], abd: [10, 15] },
+    shoulderR: { flex: [35, 45], abd: [10, 15] },
+    elbowL: { flex: [40, 50] },
+    elbowR: { flex: [40, 50] }
+  }
+},
+"Kneeling Hip-Flexor Stretch": {
+  tempo: 3.5,
+  view: "side",
+  highlight: ['thighR'],
+  preparation: "Kneel on one knee with the front foot planted and the torso upright.",
+  execution: "Gently shift the hips forward while keeping the back knee down and the chest tall. Hold the stretch through the front of the hip, then ease back.",
+  rootY: [-0.25, -0.28],
+  joints: {
+    hipL: { flex: [85, 90] },
+    kneeL: { flex: [85, 95] },
+    hipR: { flex: [-10, -15] },
+    kneeR: { flex: [85, 95] },
+    spine: { flex: [-5, -10] },
+    shoulderL: { flex: [40, 50], abd: [8, 12] },
+    shoulderR: { flex: [40, 50], abd: [8, 12] },
+    elbowL: { flex: [30, 40] },
+    elbowR: { flex: [30, 40] }
+  }
+},
+"Side-Lunge Stretch": {
+  tempo: 3.5,
+  view: "front",
+  highlight: ['thighR'],
+  preparation: "Stand in a wide stance with both feet pointing forward.",
+  execution: "Shift your weight to one side, bending that knee while keeping the opposite leg straight. Hold the stretch along the inner thigh of the straight leg, then return to center.",
+  joints: {
+    hipL: { flex: [40, 50], abd: [25, 35] },
+    kneeL: { flex: [85, 95] },
+    hipR: { flex: [5, 10], abd: [35, 45] },
+    kneeR: { flex: [0, 5] },
+    spine: { flex: [5, 10] },
+    shoulderL: { flex: [30, 40], abd: [15, 25] },
+    shoulderR: { flex: [30, 40], abd: [15, 25] },
+    elbowL: { flex: [20, 30] },
+    elbowR: { flex: [20, 30] }
+  }
+},
+"Lying Hamstring Stretch": {
+  tempo: 3.5,
+  view: "side",
+  supine: true,
+  highlight: ['thighR', 'shinR'],
+  preparation: "Lie on your back and lift one leg straight toward the ceiling.",
+  execution: "Hold behind the thigh and gently draw the leg closer while keeping the knee mostly straight. Hold the stretch along the back of the leg, then lower slowly.",
+  joints: {
+    hipR: { flex: [75, 90] },
+    kneeR: { flex: [0, 10] },
+    hipL: { flex: [0, 5] },
+    kneeL: { flex: [0, 5] },
+    shoulderL: { flex: [30, 45], abd: [8, 12] },
+    shoulderR: { flex: [30, 45], abd: [8, 12] },
+    elbowL: { flex: [60, 75] },
+    elbowR: { flex: [60, 75] }
+  }
+},
+"Downward Dog": {
+  tempo: 4.0,
+  view: "side",
+  prone: true,
+  highlight: ['shinL', 'shinR', 'thighL', 'thighR'],
+  preparation: "Start on all fours and lift the hips up and back.",
+  execution: "Straighten the legs and press the heels toward the floor while lengthening the spine. Hold the full posterior-chain stretch, then gently ease the hips down.",
+  rootY: [0.15, 0.20],
+  joints: {
+    hipL: { flex: [85, 95] },
+    hipR: { flex: [85, 95] },
+    kneeL: { flex: [0, 5] },
+    kneeR: { flex: [0, 5] },
+    shoulderL: { flex: [150, 165], abd: [8, 12] },
+    shoulderR: { flex: [150, 165], abd: [8, 12] },
+    elbowL: { flex: [5, 10] },
+    elbowR: { flex: [5, 10] },
+    spine: { flex: [15, 20] }
+  }
 }
 };
