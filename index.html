@@ -542,19 +542,29 @@ function animForWorkout(name) {
   const n = name.toLowerCase().replace(/\(.*?\)/g, '').trim();
   const has = (...words) => words.every(w => n.includes(w));
   if (has('alternating') && has('curl')) return 'Alternating Curl';
+  if (has('nordic')) return 'Nordic Curl';
   if (has('wrist') && has('curl')) return 'Wrist Curl';
   if (has('hammer') && has('curl')) return 'Hammer Curl';
   if (has('supination')) return 'Biceps Curl';
   if (has('curl')) return 'Biceps Curl';
   if (has('overhead') && has('press')) return 'Overhead Press';
   if (has('lateral') && has('raise')) return 'Lateral Raise';
+  if (has('front') && has('raise')) return 'Front Raise';
   if (has('squat')) return 'Squat';
+  if (has('romanian')) return 'Romanian Deadlift';
   if (has('deadlift')) return 'Deadlift';
   if (has('bent') && has('row')) return 'Bent-Over Row';
   if (has('calf') && has('raise')) return 'Standing Calf Raise';
   if (has('triceps') && has('extension')) return 'Overhead Triceps Extension';
   if (has('overhead') && has('triceps')) return 'Overhead Triceps Extension';
   if (has('shrug')) return 'Shrug';
+  if (has('hip abduction')) return 'Standing Hip Abduction';
+  if (has('face pull')) return 'Face Pull';
+  if (has('pull-apart') || has('pull apart')) return 'Band Pull-Apart';
+  if (has('pull-up') || has('pullup') || has('pull up')) return 'Pull-Up';
+  if (has('back extension')) return 'Standing Back Extension';
+  if (has('reverse fly')) return 'Reverse Fly';
+  if (has('lunge')) return 'Lunge';
   return null;
 }
 
