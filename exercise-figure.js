@@ -169,11 +169,14 @@ export function playAnimation(fig, animData) {
       const s = Math.sin(wave + phase);
       const t = 0.5 + 0.5 * s;
 
+      // The torso points UP while limbs point DOWN, so anatomical "flex forward"
+      // needs opposite three.js signs: limbs negate, spine does not.
+      const fwd = (jName === 'spine') ? 1 : -1;
       if (data.flex && j.flex) {
         const [mn, mx] = data.flex;
-        j.flex.rotation.x = -(mn + (mx - mn) * t) * DEG;
+        j.flex.rotation.x = fwd * (mn + (mx - mn) * t) * DEG;
       } else if (j.flex && REST[jName].flex != null) {
-        j.flex.rotation.x = -REST[jName].flex * DEG;
+        j.flex.rotation.x = fwd * REST[jName].flex * DEG;
       }
 
       if (data.abd && j.abd) {
