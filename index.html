@@ -197,7 +197,7 @@
 
   /* ---------- attribution ---------- */
   #credit {
-    position: fixed; right: 12px; top: 76px;
+    position: fixed; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
     z-index: 10; font-size: 10px; color: rgba(232,237,242,0.35);
     text-align: right; line-height: 1.5; pointer-events: none; max-width: 45%;
   }
