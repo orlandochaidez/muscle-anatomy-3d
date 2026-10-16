@@ -29,7 +29,7 @@ export function createExerciseFigure(THREE) {
 
   const spine = new Object3D();
   hips.add(spine);
-  joints.spine = { flex: spine };
+  joints.spine = { flex: spine, twist: spine };
 
   const baseMat = new MeshStandardMaterial({ color: bodyColor, roughness: 0.55, metalness: 0.05 });
 
@@ -136,12 +136,19 @@ export function playAnimation(fig, animData) {
   // animData.lift  = [min,max] meters, raises/lowers the shoulder pivots
   // animData.prone = true — lays the figure face-down (for floor exercises);
   //   group is rotated +90° about X (head toward +Z) and lifted to y=0.55.
+  // animData.supine = true — lays the figure face-up (for ab exercises);
+  //   group is rotated -90° about X (head toward +Z) and lifted to y=0.55.
   const rootYRange = animData.rootY;
   const liftRange = animData.lift;
   const prone = !!animData.prone;
+  const supine = !!animData.supine;
+  const baseY = (prone || supine) ? 0.55 : 0;
   if (prone) {
     fig.group.rotation.x = Math.PI / 2;
-    fig.group.position.set(0, 0.55, -0.82);
+    fig.group.position.set(0, baseY, -0.82);
+  } else if (supine) {
+    fig.group.rotation.x = -Math.PI / 2;
+    fig.group.position.set(0, baseY, 0.82);
   }
   const shoulderBaseY = {};
   for (const s of ['shoulderL', 'shoulderR']) {
@@ -208,9 +215,9 @@ export function playAnimation(fig, animData) {
     }
     // root motions use the unphased wave so the body moves as one
     const tR = 0.5 + 0.5 * Math.sin(wave);
-    if (rootYRange && !prone) {
+    if (rootYRange) {
       const [mn, mx] = rootYRange;
-      fig.group.position.y = mn + (mx - mn) * tR;
+      fig.group.position.y = baseY + mn + (mx - mn) * tR;
     }
     if (liftRange) {
       const [mn, mx] = liftRange;
