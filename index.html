@@ -244,7 +244,7 @@ import { GLTFLoader } from 'three/addons/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/DRACOLoader.js';
 
 const container = document.getElementById('scene-container');
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -256,7 +256,7 @@ const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerH
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.08;
+controls.dampingFactor = 0.06;
 controls.enablePan = true;
 controls.zoomToCursor = true;
 controls.minDistance = 0.35;
@@ -608,7 +608,59 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
-renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+// ---- smoothness: adaptive resolution + idle pause ----
+// Fill rate at full Retina resolution is the #1 phone GPU cost, so the pixel
+// ratio breathes: it steps down while frames run long and back up when there
+// is headroom. And once the camera fully settles, rendering pauses until the
+// next touch/click/wheel, so an idle page costs ~zero GPU.
+const MAX_PR = Math.min(window.devicePixelRatio || 1, 2);
+let prLevel = MAX_PR;
+let frameEMA = 16, lastFrameT = performance.now(), lastPRCheck = 0;
+const lastCamPos = new THREE.Vector3(1e9, 0, 0);
+const lastTargetPos = new THREE.Vector3(1e9, 0, 0);
+let lastMoveT = performance.now();
+let loopPaused = false;
+function renderFrame() {
+  const now = performance.now();
+  const dt = Math.min(now - lastFrameT, 100);
+  lastFrameT = now;
+  frameEMA = frameEMA * 0.95 + dt * 0.05;
+  if (now - lastPRCheck > 600) {
+    lastPRCheck = now;
+    if (frameEMA > 26 && prLevel > 1) {
+      prLevel = Math.max(1, prLevel - 0.25);
+      renderer.setPixelRatio(prLevel);
+    } else if (frameEMA < 13 && prLevel < MAX_PR) {
+      prLevel = Math.min(MAX_PR, prLevel + 0.25);
+      renderer.setPixelRatio(prLevel);
+    }
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  if (camera.position.distanceToSquared(lastCamPos) > 1e-8 ||
+      controls.target.distanceToSquared(lastTargetPos) > 1e-8) {
+    lastCamPos.copy(camera.position);
+    lastTargetPos.copy(controls.target);
+    lastMoveT = now;
+  } else if (now - lastMoveT > 1200) {
+    loopPaused = true;
+    renderer.setAnimationLoop(null);
+  }
+}
+function wakeLoop() {
+  lastMoveT = performance.now();
+  if (loopPaused) {
+    loopPaused = false;
+    lastFrameT = performance.now();
+    renderer.setAnimationLoop(renderFrame);
+  }
+}
+container.addEventListener('pointerdown', wakeLoop, true);
+container.addEventListener('wheel', wakeLoop, { capture: true, passive: true });
+container.addEventListener('touchstart', wakeLoop, { capture: true, passive: true });
+document.addEventListener('pointerdown', wakeLoop, true);
+window.addEventListener('resize', wakeLoop);
+renderer.setAnimationLoop(renderFrame);
 </script>
 </body>
 </html>
