@@ -393,7 +393,7 @@ function setLayer(layer) {
   document.getElementById('btn-layer-surface').classList.toggle('active', layer === 'surface');
   document.getElementById('btn-layer-deep').classList.toggle('active', layer === 'deep');
   document.getElementById('btn-layer-skeleton').classList.toggle('active', layer === 'skeleton');
-  if (skeletonMesh) skeletonMesh.visible = (layer === 'skeleton');
+  if (skeletonMesh) skeletonMesh.visible = true; // bones ride under the muscles in every layer — skull, sternum, shins, hands peek through the gaps (Neal-style)
   for (const m of muscleMeshes) {
     const d = MUSCLE_DATA[m.userData.key];
     const isDeep = !!(d && d.layer === 'deep');
