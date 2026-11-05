@@ -190,6 +190,7 @@
   <div id="layerseg">
     <button class="segbtn active" id="btn-layer-surface">Surface</button>
     <button class="segbtn" id="btn-layer-deep">Deep</button>
+    <button class="segbtn" id="btn-layer-skeleton">Skeleton</button>
   </div>
   <button class="pillbtn" id="btn-front">Front</button>
   <button class="pillbtn" id="btn-back">Back</button>
@@ -317,11 +318,31 @@ function loadGLB(url) {
     }, undefined, reject);
   });
 }
+
+// ---- skeleton layer (visual only, not selectable) ----
+let skeletonMesh = null;
+function loadSkeleton() {
+  return new Promise((resolve) => {
+    gltfLoader.load('skeleton.glb', (gltf) => {
+      gltf.scene.traverse((obj) => {
+        if (obj.isMesh) {
+          obj.material = new THREE.MeshStandardMaterial({
+            color: 0xe6dfc9, roughness: 0.85, metalness: 0.0
+          });
+          obj.visible = false;
+          skeletonMesh = obj;
+        }
+      });
+      resolve(gltf.scene);
+    }, undefined, (err) => { console.warn('skeleton model not loaded:', err); resolve(null); });
+  });
+}
 Promise.all([
   loadGLB('muscles.glb'),
   // deep-layer models are optional: the app still works without them if a file fails
   loadGLB('muscles2.glb').catch(err => { console.warn('deep muscle model not loaded:', err); return null; }),
-  loadGLB('muscles3.glb').catch(err => { console.warn('deep muscle model 2 not loaded:', err); return null; })
+  loadGLB('muscles3.glb').catch(err => { console.warn('deep muscle model 2 not loaded:', err); return null; }),
+  loadSkeleton()
 ]).then((roots) => {
   const root = new THREE.Group();
   roots.forEach(r => { if (r) root.add(r); });
@@ -350,6 +371,7 @@ Promise.all([
     return d && d.layer === 'deep';
   });
   if (!hasDeep) document.getElementById('layerseg').style.display = 'none';
+  if (!skeletonMesh) document.getElementById('btn-layer-skeleton').style.display = 'none';
   setLayer('surface');
   buildList();
 }).catch((err) => {
@@ -370,9 +392,12 @@ function setLayer(layer) {
   currentLayer = layer;
   document.getElementById('btn-layer-surface').classList.toggle('active', layer === 'surface');
   document.getElementById('btn-layer-deep').classList.toggle('active', layer === 'deep');
+  document.getElementById('btn-layer-skeleton').classList.toggle('active', layer === 'skeleton');
+  if (skeletonMesh) skeletonMesh.visible = (layer === 'skeleton');
   for (const m of muscleMeshes) {
     const d = MUSCLE_DATA[m.userData.key];
     const isDeep = !!(d && d.layer === 'deep');
+    if (layer === 'skeleton') { m.visible = false; continue; }
     if (layer === 'deep') {
       // deep muscles solid, surface muscles fade to ghosts
       m.visible = true;
@@ -383,14 +408,18 @@ function setLayer(layer) {
     }
   }
   if (selected) {
-    const sd = MUSCLE_DATA[selected.userData.key];
-    const selDeep = !!(sd && sd.layer === 'deep');
-    if (selDeep !== (layer === 'deep')) select(null);
+    if (layer === 'skeleton') select(null);
+    else {
+      const sd = MUSCLE_DATA[selected.userData.key];
+      const selDeep = !!(sd && sd.layer === 'deep');
+      if (selDeep !== (layer === 'deep')) select(null);
+    }
   }
   buildList(searchInput.value);
 }
 document.getElementById('btn-layer-surface').addEventListener('click', () => setLayer('surface'));
 document.getElementById('btn-layer-deep').addEventListener('click', () => setLayer('deep'));
+document.getElementById('btn-layer-skeleton').addEventListener('click', () => setLayer('skeleton'));
 
 // ---- camera views ----
 let homeView = null;
