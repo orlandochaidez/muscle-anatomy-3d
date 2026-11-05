@@ -42,13 +42,16 @@
 
   /* ---------- view controls ---------- */
   #viewbar {
-    position: fixed; left: 14px; bottom: max(14px, env(safe-area-inset-bottom));
-    display: flex; flex-direction: column; gap: 8px; z-index: 20;
+    position: fixed; left: 0; right: 0; bottom: max(12px, env(safe-area-inset-bottom));
+    display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 20;
+    pointer-events: none;
   }
+  #viewbar > * { pointer-events: auto; }
+  #viewrow { display: flex; gap: 8px; }
   .pillbtn {
-    padding: 10px 16px; border-radius: 999px;
+    padding: 8px 18px; border-radius: 999px;
     background: rgba(20,28,38,0.85); border: 1px solid rgba(255,255,255,0.12);
-    color: #e8edf2; font-size: 14px; font-weight: 600; cursor: pointer;
+    color: #e8edf2; font-size: 13px; font-weight: 600; cursor: pointer;
     backdrop-filter: blur(6px);
   }
   .pillbtn:active { transform: scale(0.95); }
@@ -61,7 +64,7 @@
     backdrop-filter: blur(6px);
   }
   .segbtn {
-    padding: 10px 13px; border: none; background: transparent;
+    padding: 9px 12px; border: none; background: transparent;
     color: #e8edf2; font-size: 13px; font-weight: 700; cursor: pointer;
   }
   .segbtn.active { background: #ff6b5e; color: #141a21; }
@@ -74,7 +77,7 @@
 
   /* ---------- hint ---------- */
   #hint {
-    position: fixed; bottom: 92px; left: 50%;
+    position: fixed; bottom: 104px; left: 50%;
     transform: translateX(-50%); z-index: 15;
     font-size: 13px; color: rgba(232,237,242,0.65);
     background: rgba(10,14,19,0.6); padding: 8px 16px; border-radius: 999px;
@@ -169,7 +172,7 @@
 
   /* ---------- attribution ---------- */
   #credit {
-    position: fixed; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+    position: fixed; right: 12px; top: calc(max(12px, env(safe-area-inset-top)) + 54px);
     z-index: 10; font-size: 10px; color: rgba(232,237,242,0.35);
     text-align: right; line-height: 1.5; pointer-events: none; max-width: 45%;
   }
@@ -187,14 +190,16 @@
 </div>
 
 <div id="viewbar">
+  <div id="viewrow">
+    <button class="pillbtn" id="btn-front">Front</button>
+    <button class="pillbtn" id="btn-back">Back</button>
+    <button class="pillbtn" id="btn-reset">Reset</button>
+  </div>
   <div id="layerseg">
     <button class="segbtn active" id="btn-layer-surface">Surface</button>
     <button class="segbtn" id="btn-layer-deep">Deep</button>
     <button class="segbtn" id="btn-layer-skeleton">Skeleton</button>
   </div>
-  <button class="pillbtn" id="btn-front">Front</button>
-  <button class="pillbtn" id="btn-back">Back</button>
-  <button class="pillbtn" id="btn-reset">Reset</button>
 </div>
 
 <div id="hint">Drag to spin &nbsp;&middot;&nbsp; Pinch to zoom &nbsp;&middot;&nbsp; Tap a muscle</div>
