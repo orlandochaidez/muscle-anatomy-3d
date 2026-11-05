@@ -263,6 +263,35 @@ controls.minDistance = 0.35;
 controls.maxDistance = 6;
 controls.autoRotateSpeed = 1.6;
 
+// ---- desktop wheel / trackpad-pinch zoom speed ----
+// OrbitControls r160 normalizes wheel deltas by (100 * devicePixelRatio), so on
+// a Retina MacBook a trackpad pinch barely moves the camera. Fix: while a wheel
+// event is being processed, temporarily raise zoomSpeed, then restore it.
+// Touch pinch never fires wheel events and reads zoomSpeed only during touch
+// gestures, so phone/tablet pinch zoom is completely untouched.
+container.addEventListener('wheel', (e) => {
+  let boost = 5;
+  if (e.deltaMode === 1) boost *= 12; // line-mode wheels (e.g. Firefox) report tiny deltas
+  controls.zoomSpeed = boost;
+  setTimeout(() => { controls.zoomSpeed = 1.0; }, 0);
+}, true);
+
+// Safari desktop trackpad pinch fires proprietary gesture events instead of
+// wheel; handle those with a direct dolly so Safari pinches zoom too.
+let gestureScale = 1;
+renderer.domElement.addEventListener('gesturestart', (e) => { e.preventDefault(); gestureScale = e.scale || 1; });
+renderer.domElement.addEventListener('gesturechange', (e) => {
+  e.preventDefault();
+  if (!e.scale || !gestureScale) return;
+  const factor = gestureScale / e.scale; // >1 fingers closing = zoom out
+  gestureScale = e.scale;
+  const off = camera.position.clone().sub(controls.target);
+  const dist = THREE.MathUtils.clamp(off.length() * factor, controls.minDistance, controls.maxDistance);
+  camera.position.copy(controls.target).addScaledVector(off.normalize(), dist);
+  controls.update();
+});
+renderer.domElement.addEventListener('gestureend', (e) => { e.preventDefault(); });
+
 // ---- lights ----
 scene.add(new THREE.HemisphereLight(0xffffff, 0x2a3440, 1.0));
 const key = new THREE.DirectionalLight(0xffffff, 2.0);
