@@ -435,6 +435,91 @@ const MUSCLE_DATA = {
       { name: "Kettlebell deadlift", how: "A lighter, friendlier deadlift. Kettlebell between your feet, hinge back, grab it, stand tall driving your hips forward. Keep your back flat the whole time. 3 sets of 10." },
     ]
   },
+  quadratus_lumborum: {
+    name: "Quadratus Lumborum",
+    region: "Back",
+    layer: "deep",
+    function: "The deep square muscle on each side of your lower back, running from your hip bone up to your lowest rib and the sides of your lumbar spine. Side-bends your torso, steadies your pelvis when you walk, and holds your last rib down when you breathe hard. The classic 'my low back is tight' muscle.",
+    stretches: [
+      { name: "Standing QL stretch", how: "Reach your right arm overhead, grab the wrist with your left hand and lean left until you feel the side of your low back open. Hold 30 seconds per side." },
+      { name: "Seated side bend", how: "Sit tall, one hand on the floor, reach the other arm overhead and lean. Hold 30 seconds per side." },
+      { name: "Supine QL release", how: "Lie on your back, cross your right ankle over your left knee, drop both knees to the left. Hold 45 seconds per side." },
+      { name: "Child's pose with side reach", how: "Child's pose, walk both hands to the right to stretch the left low back. Hold 30 seconds per side." },
+      { name: "Foam roller QL roll", how: "Lie on your side with a foam roller under your lower ribs, roll slowly down to your hip. Pause on sore spots. 1 minute per side." },
+      { name: "Doorframe side stretch", how: "One hand on a doorframe, step away and lean your hips out. Hold 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Side plank", how: "On one forearm, body in a straight line, hold 30-45 seconds per side. The QL's main job is holding this position." },
+      { name: "Suitcase carry", how: "Hold a heavy dumbbell in one hand and walk tall without leaning to the side. 3 sets of 30 seconds per side." },
+      { name: "Side-lying hip hike", how: "Lie on your side on a bench, let your hips drop, then hike them up. 3 sets of 12 per side." },
+      { name: "Single-arm farmer's carry", how: "Heavy dumbbell in one hand, walk with perfect posture. 3 sets of 40 steps per side." },
+      { name: "Windmill (light)", how: "Feet wide, one arm up, hinge and reach the other hand toward the opposite foot. Keep it light. 3 sets of 8 per side." }
+    ]
+  },
+  multifidus: {
+    name: "Multifidus",
+    region: "Back",
+    layer: "deep",
+    function: "The small, deep stabilizer muscles running the whole length of your spine, jumping 2-4 vertebrae at a time. They don't make big movements — they hold each vertebra steady so your back doesn't give out. The most important muscle for a healthy low back, and the first one to shut down after a back injury.",
+    stretches: [
+      { name: "Cat-cow", how: "On all fours, slowly arch your back up like a cat, then dip it down like a cow. Move with your breath for 10 slow reps." },
+      { name: "Child's pose", how: "Kneel, sit your hips back to your heels and reach your arms forward, letting your back round. Hold 45 seconds." },
+      { name: "Supine spinal twist", how: "Lie on your back, arms out wide, drop both bent knees to one side. Hold 30-45 seconds per side." },
+      { name: "Sphinx pose", how: "Lie face down, prop up on your forearms. Let your back sag gently and breathe. Hold 1-2 minutes." },
+      { name: "Segmental cat-cow", how: "On all fours, round your back one vertebra at a time from tailbone to neck, then reverse. 8 slow reps." },
+      { name: "Knee-to-chest stretch", how: "Lie on your back, pull one knee to your chest. Hold 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Bird dog", how: "On all fours, reach opposite arm and leg out, keeping your back flat and hips level. Hold 5 seconds. 3 sets of 8 per side." },
+      { name: "Dead bug", how: "Lie on your back, arms up, knees at 90 degrees. Lower opposite arm and leg without letting your back arch. 3 sets of 8 per side." },
+      { name: "McGill curl-up", how: "One knee bent, hands under your lower back, lift just your head and shoulders an inch. 3 sets of 8, hold 5 seconds each." },
+      { name: "Prone arm/leg lifts", how: "Lie face down, lift opposite arm and leg a few inches, hold 5 seconds. 3 sets of 8 per side." },
+      { name: "Quadruped rocking", how: "On all fours, rock your hips back toward your heels, then forward, keeping your spine long. 10 slow reps." },
+      { name: "Side plank", how: "On one forearm, hold your body straight. 30-45 seconds per side." }
+    ]
+  },
+  internal_oblique: {
+    name: "Internal Oblique",
+    region: "Core",
+    layer: "deep",
+    function: "The middle layer of your abdominal wall, running diagonally under the external oblique. Twists your torso, side-bends you, and cinches your waist tight like a corset when you brace.",
+    stretches: [
+      { name: "Standing side bend", how: "Arms overhead, lean to one side until you feel the whole side body open. Hold 30 seconds per side." },
+      { name: "Lying trunk rotation", how: "Lie on your back, arms out, drop both bent knees to one side. Hold 30 seconds per side." },
+      { name: "Seated spinal twist", how: "Sit tall, cross one leg over the other, hug the knee and twist gently. Hold 30 seconds per side." },
+      { name: "Supine twist stretch", how: "Lie on your back, knees to one side, arms wide. Hold 45 seconds per side." },
+      { name: "Doorframe side stretch", how: "One hand on a doorframe, step away and lean your hips out. Hold 30 seconds per side." }
+    ],
+    workouts: [
+      { name: "Russian twists", how: "Sit leaning back slightly, rotate your torso side to side. 3 sets of 20 total." },
+      { name: "Cable woodchop", how: "High to low across your body, rotating through the core. 3 sets of 10 per side." },
+      { name: "Pallof press", how: "Cable at chest height, press straight out and resist the pull. 3 sets of 10 per side." },
+      { name: "Side plank with reach-through", how: "Side plank, thread the top arm under your body and back up. 3 sets of 8 per side." },
+      { name: "Bicycle crunches", how: "Alternate opposite elbow to knee in a pedaling motion. 3 sets of 20 total." },
+      { name: "Standing cable twist", how: "Cable at chest height, rotate away from the stack with straight arms. 3 sets of 12 per side." }
+    ]
+  },
+  transversus_abdominis: {
+    name: "Transversus Abdominis",
+    region: "Core",
+    layer: "deep",
+    function: "The deepest abdominal muscle, wrapping around your waist like a weight belt. It doesn't move you — it braces you. Every heavy lift, every cough, every time you brace your core, this is the muscle doing the work. A weak one is the most common hidden cause of low back pain.",
+    stretches: [
+      { name: "Cobra stretch", how: "Lie face down, press your chest up while keeping hips on the floor. Hold 20-30 seconds." },
+      { name: "Standing back extension", how: "Hands on your lower back, gently lean backward. Hold 10-15 seconds, repeat 3 times." },
+      { name: "Kneeling ab stretch", how: "Kneel, lean back and place hands on your heels, opening the front of your body. Hold 20 seconds." },
+      { name: "Foam roller ab opener", how: "Lie with a foam roller along your spine, arms out wide, let your chest open. Hold 1 minute." },
+      { name: "Upward bow (gentle)", how: "Lie face down, press up into a cobra and reach your chest tall. Hold 20 seconds." }
+    ],
+    workouts: [
+      { name: "Dead bug", how: "Lie on your back, arms up, knees at 90. Lower opposite arm and leg without letting your back arch. 3 sets of 8 per side." },
+      { name: "Hollow body hold", how: "Lift shoulders and legs off the floor, lower back pressed down. Hold 20-30 seconds. 3 rounds." },
+      { name: "Plank", how: "Forearm plank, body straight, brace your abs hard. 3 holds of 30-60 seconds." },
+      { name: "Stomach vacuum", how: "Breathe all the air out, pull your belly button to your spine and hold. 3 sets of 15 seconds. Old-school but it works." },
+      { name: "Pallof press", how: "Cable at chest height, press straight out and resist the pull. 3 sets of 10 per side." },
+      { name: "Bird dog", how: "On all fours, reach opposite arm and leg out, back flat. Hold 5 seconds. 3 sets of 8 per side." }
+    ]
+  },
   rhomboid_major: {
     name: "Rhomboid Major",
     region: "Back",

@@ -376,6 +376,7 @@ Promise.all([
   // deep-layer models are optional: the app still works without them if a file fails
   loadGLB('muscles2.glb').catch(err => { console.warn('deep muscle model not loaded:', err); return null; }),
   loadGLB('muscles3.glb').catch(err => { console.warn('deep muscle model 2 not loaded:', err); return null; }),
+  loadGLB('muscles4.glb').catch(err => { console.warn('deep muscle model 3 not loaded:', err); return null; }),
   loadSkeleton()
 ]).then((roots) => {
   const root = new THREE.Group();
