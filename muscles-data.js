@@ -24,11 +24,19 @@ const MUSCLE_DATA = {
     function: "The big kite-shaped muscle across your upper back and neck. Shrugs your shoulders, pulls shoulder blades together, and stabilizes your neck.",
     stretches: [
       { name: "Upper-trap stretch", how: "Sit tall, tilt your right ear toward your right shoulder and gently press with your right hand for a deeper stretch. Hold 30 seconds per side." },
-      { name: "Cross-body shoulder stretch", how: "Bring your right arm across your chest and hold it with your left hand just above the elbow. Hold 30 seconds per side to open the mid-traps." }
+      { name: "Cross-body shoulder stretch", how: "Bring your right arm across your chest and hold it with your left hand just above the elbow. Hold 30 seconds per side to open the mid-traps." },
+      { name: "Neck side stretch", how: "Tilt your ear to your shoulder, hold 30 seconds per side." },
+      { name: "Eagle arms", how: "Wrap your right arm under your left, press palms together, lift your elbows while rounding the upper back. Hold 20 seconds per side." },
+      { name: "Wall angel stretch", how: "Back against a wall, arms in a W, slide them up and down slowly. 10 reps." },
+      { name: "Foam roller upper-back roll", how: "Roller across your shoulder blades, hands behind head, roll slowly. 1 minute." },
+      { name: "Cat-cow upper back", how: "On all fours, round and arch focusing on the upper back. 10 slow reps." },
     ],
     workouts: [
       { name: "Dumbbell shrugs", how: "Hold a dumbbell in each hand at your sides, lift your shoulders straight up toward your ears, squeeze for 2 seconds, lower slowly. 3 sets of 12-15." },
-      { name: "Face pulls", how: "Using a cable or band at face height, pull toward your forehead with elbows high and wide, squeezing your shoulder blades together. 3 sets of 12." }
+      { name: "Face pulls", how: "Using a cable or band at face height, pull toward your forehead with elbows high and wide, squeezing your shoulder blades together. 3 sets of 12." },
+      { name: "Y-T-W raises", how: "Face down on a bench, raise arms in Y, T, then W shapes. 3 sets of 8 each." },
+      { name: "Prone trap raises", how: "Face down, arms out, lift them toward the ceiling, squeezing shoulder blades. 3 sets of 12." },
+      { name: "Band pull-aparts (overhead)", how: "Band overhead, pull apart until it touches the back of your neck. 3 sets of 15." },
     ]
   },
   deltoid: {
@@ -83,12 +91,19 @@ const MUSCLE_DATA = {
     function: "The 'six-pack' muscle running down the front of your belly. Bends your trunk forward and braces your midsection.",
     stretches: [
       { name: "Cobra stretch", how: "Lie face down, place your hands under your shoulders, and press your chest up while keeping your hips on the floor. Hold 20-30 seconds." },
-      { name: "Standing back extension", how: "Stand tall, place your hands on your lower back, and gently lean backward. Hold 10-15 seconds, repeat 3 times." }
+      { name: "Standing back extension", how: "Stand tall, place your hands on your lower back, and gently lean backward. Hold 10-15 seconds, repeat 3 times." },
+      { name: "Upward bow (gentle)", how: "Lie face down, press up into a cobra and reach your chest tall. Hold 20 seconds. Only as far as comfortable." },
+      { name: "Standing side reach", how: "Reach both arms up, lean gently to each side. Hold 15 seconds per side." },
+      { name: "Kneeling ab stretch", how: "Kneel, lean back and place your hands on your heels, opening the front of your body. Hold 20 seconds." },
+      { name: "Foam roller ab opener", how: "Lie with a foam roller along your spine, arms out wide, let your chest open. Hold 1 minute." },
     ],
     workouts: [
       { name: "Crunches", how: "Lie on your back, knees bent, and curl your shoulders a few inches off the floor, squeezing your abs at the top. 3 sets of 15-20." },
       { name: "Hanging or lying leg raises", how: "Hang from a bar (or lie on your back) and raise your legs until your hips bend 90 degrees, then lower slowly. 3 sets of 10-12." },
-      { name: "Plank", how: "Hold a forearm plank with your body in a straight line, bracing your abs hard. 3 holds of 30-60 seconds." }
+      { name: "Plank", how: "Hold a forearm plank with your body in a straight line, bracing your abs hard. 3 holds of 30-60 seconds." },
+      { name: "Plank shoulder taps", how: "Plank position, tap opposite shoulders without letting hips rock. 3 sets of 10 per side." },
+      { name: "Hollow body hold", how: "Lie on your back, lift shoulders and legs off the floor, lower back pressed down. Hold 20-30 seconds. 3 rounds." },
+      { name: "Cable crunch", how: "Kneel at a cable stack, crunch down toward your knees. 3 sets of 12-15." },
     ]
   },
   external_oblique: {
@@ -98,12 +113,19 @@ const MUSCLE_DATA = {
     function: "The side-abs. Twist and side-bend your trunk, and help brace your core during heavy lifts.",
     stretches: [
       { name: "Standing side bend", how: "Stand tall, raise your right arm overhead and lean to the left until you feel a stretch down your right side. Hold 30 seconds per side." },
-      { name: "Lying trunk rotation", how: "Lie on your back with arms out, drop both bent knees to one side while keeping shoulders on the floor. Hold 30 seconds per side." }
+      { name: "Lying trunk rotation", how: "Lie on your back with arms out, drop both bent knees to one side while keeping shoulders on the floor. Hold 30 seconds per side." },
+      { name: "Standing side stretch", how: "Arms overhead, lean to one side, feel the whole side body open. Hold 30 seconds per side." },
+      { name: "Seated side bend", how: "Sit cross-legged, one hand on the floor, reach the other arm overhead and lean. Hold 30 seconds per side." },
+      { name: "Supine twist stretch", how: "Lie on your back, knees to one side, arms wide. Hold 45 seconds per side." },
+      { name: "Doorframe side stretch", how: "One hand on a doorframe, step away and lean your hips out. Hold 30 seconds per side." },
     ],
     workouts: [
       { name: "Russian twists", how: "Sit leaning back slightly, feet off the floor if you can, and rotate your torso side to side touching the floor each way. 3 sets of 20 total." },
       { name: "Side plank", how: "On one forearm with your body in a straight line, hold 30-45 seconds per side, keeping hips lifted." },
-      { name: "Bicycle crunches", how: "Lie on your back and alternate bringing opposite elbow to knee in a pedaling motion. 3 sets of 20 total." }
+      { name: "Bicycle crunches", how: "Lie on your back and alternate bringing opposite elbow to knee in a pedaling motion. 3 sets of 20 total." },
+      { name: "Pallof press", how: "Cable or band at chest height, press straight out and hold, resisting the pull. 3 sets of 10 per side." },
+      { name: "Cable woodchop", how: "High to low across your body, rotating through the core. 3 sets of 10 per side." },
+      { name: "Side plank with reach-through", how: "Side plank, thread the top arm under your body and back up. 3 sets of 8 per side." },
     ]
   },
   latissimus_dorsi: {
@@ -113,12 +135,22 @@ const MUSCLE_DATA = {
     function: "The big 'wings' of your back. Pull your arms down and back — the main muscle behind pull-ups and rows.",
     stretches: [
       { name: "Overhead lat stretch", how: "Grab a doorframe or pole overhead with both hands and lean your hips back and away until you feel a deep stretch under your arms. Hold 30 seconds." },
-      { name: "Child's pose lat stretch", how: "Kneel and reach both hands forward on the floor, then walk them to the right to stretch the left lat. Hold 30 seconds per side." }
+      { name: "Child's pose lat stretch", how: "Kneel and reach both hands forward on the floor, then walk them to the right to stretch the left lat. Hold 30 seconds per side." },
+      { name: "Doorframe lat stretch", how: "Grab a doorframe overhead with one hand and lean your hips away until you feel it down your side. Hold 30 seconds per side." },
+      { name: "Foam roller lat roll", how: "Lie on your side with a foam roller under your armpit, slowly roll from armpit to mid-ribs. Pause on sore spots. 1 minute per side." },
+      { name: "Kneeling lat stretch (prayer)", how: "Kneel in front of a bench, rest your elbows on it, drop your chest toward the floor. Hold 30-45 seconds." },
+      { name: "Standing side bend with reach", how: "Reach both arms overhead, grab one wrist with the other hand and lean to the side. Hold 30 seconds per side." },
+      { name: "Eagle arms lat opener", how: "Wrap one arm under the other, lift your elbows and round your upper back to feel the stretch between the shoulder blades. Hold 20 seconds per side." },
+      { name: "Wall lat stretch", how: "Face a wall, place one hand high on it, step back and lean your hips away. Hold 30 seconds per side." },
     ],
     workouts: [
       { name: "Pull-ups", how: "Hang from a bar and pull your chest up to it, then lower with control. Use a band or assisted machine if needed. 3 sets to near-failure." },
       { name: "Bent-over rows", how: "Hinge at the hips with a flat back and row a barbell or dumbbells to your lower ribs, squeezing your shoulder blades. 3 sets of 8-12." },
-      { name: "Lat pulldown", how: "Pull the bar down to your upper chest while keeping your torso upright, then let it rise slowly. 3 sets of 10-12." }
+      { name: "Lat pulldown", how: "Pull the bar down to your upper chest while keeping your torso upright, then let it rise slowly. 3 sets of 10-12." },
+      { name: "Straight-arm pulldown", how: "Cable at head height, arms straight, pull the bar down to your thighs by squeezing your lats. 3 sets of 12." },
+      { name: "Single-arm dumbbell row", how: "One hand on a bench, row a dumbbell to your hip, keeping your back flat. 3 sets of 10 per arm." },
+      { name: "Seated cable row", how: "Pull the handle to your lower ribs, elbows driving back, squeezing your back hard at the end. 3 sets of 10-12." },
+      { name: "Dead hang scapular pulls", how: "Hang from a bar and pull your shoulder blades down and together without bending your arms. 3 sets of 10. Builds lat control and decompresses the spine." },
     ]
   },
   biceps_brachii: {
@@ -186,12 +218,23 @@ const MUSCLE_DATA = {
     function: "The biggest muscle in your body — your butt. Drives your hips forward in squats, sprints, and climbs.",
     stretches: [
       { name: "Figure-4 stretch", how: "Lie on your back, cross your right ankle over your left knee, and pull the left thigh toward you. Hold 30 seconds per side." },
-      { name: "Pigeon pose", how: "From a plank, bring your right knee forward behind your right wrist and sink your hips down. Hold 30-60 seconds per side." }
+      { name: "Pigeon pose", how: "From a plank, bring your right knee forward behind your right wrist and sink your hips down. Hold 30-60 seconds per side." },
+      { name: "Seated glute stretch", how: "Sit tall, cross your right ankle over your left knee and lean forward gently until you feel the glute stretch. Hold 30 seconds per side." },
+      { name: "Standing glute stretch", how: "Rest your right ankle on a low table or bench at knee height, hinge forward slightly. Hold 30 seconds per side." },
+      { name: "Supine figure-4 (deep)", how: "Lie on your back, ankle over opposite knee, thread your hands behind the bottom thigh and pull it toward you. Hold 45 seconds per side." },
+      { name: "90/90 hip stretch", how: "Sit with both knees bent at 90 degrees, one leg in front and one to the side, lean forward over the front shin. Hold 30 seconds, then switch." },
+      { name: "Cross-legged forward fold", how: "Sit cross-legged, fold forward over your shins and reach your arms out. Hold 45 seconds. Loosens glutes and low back together." },
+      { name: "Happy baby", how: "Lie on your back, grab the outsides of your feet and pull your knees toward your armpits. Hold 30-45 seconds." },
     ],
     workouts: [
       { name: "Barbell squats", how: "With the bar on your upper back, sit your hips back and down until thighs are parallel, then drive up through your heels. 3-4 sets of 6-10." },
       { name: "Hip thrusts", how: "With your upper back on a bench and a barbell over your hips, thrust your hips up and squeeze your glutes hard at the top. 3 sets of 10-12." },
-      { name: "Glute bridges", how: "Lie on your back, feet flat, and lift your hips until your body forms a straight line from shoulders to knees. 3 sets of 15." }
+      { name: "Glute bridges", how: "Lie on your back, feet flat, and lift your hips until your body forms a straight line from shoulders to knees. 3 sets of 15." },
+      { name: "Single-leg glute bridge", how: "One leg up, drive through the other heel to lift your hips, keeping them level. 3 sets of 10 per leg." },
+      { name: "Romanian deadlift", how: "Soft knees, hinge at the hips with a flat back, lower the bar to mid-shin, then drive your hips forward to stand. 3 sets of 8-10." },
+      { name: "Bulgarian split squat", how: "Back foot on a bench, lower into a deep lunge on the front leg. 3 sets of 8 per leg. Brutal for glutes." },
+      { name: "Step-ups", how: "Step onto a bench or box with one foot, drive through the heel to stand tall. 3 sets of 10 per leg." },
+      { name: "Kettlebell swings", how: "Hinge, not squat. Snap your hips forward to swing the bell to chest height. 3 sets of 15. Power for the whole backside." },
     ]
   },
   rectus_femoris: {
@@ -275,12 +318,19 @@ const MUSCLE_DATA = {
     function: "The outer hamstring on the back of your thigh. Bends your knee and extends your hip — powers sprinting and deadlifts.",
     stretches: [
       { name: "Standing toe touch", how: "With a slight knee bend, hinge at the hips and reach toward your toes until you feel the back of your thighs stretch. Hold 30 seconds." },
-      { name: "Lying hamstring stretch", how: "Lie on your back, loop a strap around one foot, and straighten the leg toward the ceiling. 30 seconds per leg." }
+      { name: "Lying hamstring stretch", how: "Lie on your back, loop a strap around one foot, and straighten the leg toward the ceiling. 30 seconds per leg." },
+      { name: "Seated hamstring stretch", how: "Sit with one leg straight, fold forward over it reaching for your toes. Hold 30 seconds per side." },
+      { name: "Wall hamstring stretch", how: "Lie on your back, one leg up against a wall, straighten it until you feel the stretch. Hold 45 seconds per side." },
+      { name: "Downward dog", how: "Hands and feet on the floor, hips high, heels pressing down. Hold 30-60 seconds." },
+      { name: "Dynamic leg swings", how: "Hold a wall, swing one leg forward and back gently, increasing the range. 10 swings per leg." },
     ],
     workouts: [
       { name: "Romanian deadlifts", how: "Hinge at the hips with a slight knee bend, lowering the bar along your legs until you feel a deep hamstring stretch, then drive hips forward. 3 sets of 8-12." },
       { name: "Lying leg curls", how: "Curl the pad toward your butt, squeezing the hamstrings hard at the top. 3 sets of 12-15." },
-      { name: "Good mornings", how: "Bar on your upper back, hinge forward with a soft knee bend, then stand tall. Start light. 3 sets of 10." }
+      { name: "Good mornings", how: "Bar on your upper back, hinge forward with a soft knee bend, then stand tall. Start light. 3 sets of 10." },
+      { name: "Nordic curl (assisted)", how: "Knees on a pad, ankles held, lower your body slowly toward the floor. Use your hands to push back up. 3 sets of 5. Hard but gold." },
+      { name: "Single-leg Romanian deadlift", how: "Hinge on one leg, other leg back, lower the weight toward the floor. 3 sets of 8 per leg." },
+      { name: "Glute-ham raise", how: "On a GHD, lower your body with control and pull back up with your hamstrings. 3 sets of 8." },
     ]
   },
   gastrocnemius: {
@@ -318,12 +368,21 @@ const MUSCLE_DATA = {
     function: "The side-butt muscle hiding under the glute max. Keeps your hips level every step you take — weak ones cause knee cave and hip drop when you run or squat.",
     stretches: [
       { name: "Figure-4 stretch", how: "Lie on your back, cross your right ankle over your left knee, then pull the left thigh toward your chest until you feel a deep stretch in the right glute. Hold 30 seconds per side." },
-      { name: "Seated hip opener", how: "Sit with your right ankle on your left knee and gently lean forward with a flat back. Hold 30 seconds per side." }
+      { name: "Seated hip opener", how: "Sit with your right ankle on your left knee and gently lean forward with a flat back. Hold 30 seconds per side." },
+      { name: "Standing IT-band cross stretch", how: "Cross your right leg behind your left, lean to the left until you feel the outer hip stretch. Hold 30 seconds per side." },
+      { name: "Lying side hip stretch", how: "Lie on your side, top leg bent behind you, gently press the knee toward the floor. Hold 30 seconds per side." },
+      { name: "Wall hip stretch", how: "Stand sideways to a wall, cross the near leg behind, press your hip toward the wall. Hold 30 seconds per side." },
+      { name: "90/90 hip switches", how: "Sit in 90/90 position and slowly switch sides, keeping your chest tall. 10 slow switches per side." },
+      { name: "Supine hip crossover", how: "Lie on your back, cross one leg over the other and let the knee drop toward the floor. Hold 30 seconds per side." },
     ],
     workouts: [
       { name: "Clamshells", how: "Lie on your side with knees bent, feet together. Open the top knee like a clamshell without rolling your hips back. 3 sets of 15 per side." },
       { name: "Side-lying hip abduction", how: "Lie on your side, legs straight. Lift the top leg to about 45 degrees, pause, lower slowly. 3 sets of 12-15 per side." },
-      { name: "Single-leg glute bridge", how: "On your back, one foot planted, other leg up. Drive through the heel to lift your hips, squeezing the glute. 3 sets of 10 per side." }
+      { name: "Single-leg glute bridge", how: "On your back, one foot planted, other leg up. Drive through the heel to lift your hips, squeezing the glute. 3 sets of 10 per side." },
+      { name: "Banded lateral walks", how: "Band around your ankles, quarter-squat and step sideways, keeping tension. 3 sets of 10 steps each way." },
+      { name: "Fire hydrants", how: "On all fours, lift one bent knee out to the side like a dog at a hydrant. 3 sets of 12 per side." },
+      { name: "Side-lying leg raises", how: "Lie on your side, lift the top leg straight up and lower slowly. 3 sets of 15 per side." },
+      { name: "Single-leg balance reach", how: "Stand on one leg, reach the other leg forward, side, and back without touching down. 3 rounds per leg." },
     ]
   },
   gluteus_minimus: {
@@ -333,12 +392,19 @@ const MUSCLE_DATA = {
     function: "The deepest butt muscle, tucked beneath the medius. Fine-tunes hip stability with every step — the unsung hero of pain-free running.",
     stretches: [
       { name: "Lying figure-4 (deep)", how: "Lie on your back, cross one ankle over the opposite knee and pull the bottom thigh in tight. Push the crossed knee gently away for a deeper stretch. 30 seconds per side." },
-      { name: "Standing IT-band cross stretch", how: "Cross your right leg behind your left and lean left until you feel the stretch along the outer right hip. Hold 30 seconds per side." }
+      { name: "Standing IT-band cross stretch", how: "Cross your right leg behind your left and lean left until you feel the stretch along the outer right hip. Hold 30 seconds per side." },
+      { name: "Seated figure-4 (deep)", how: "Sit tall, cross one ankle over the opposite knee and lean forward. Hold 30 seconds per side." },
+      { name: "Side-lying hip opener", how: "Lie on your side and pull your top knee toward your chest, then across your body. Hold 30 seconds per side." },
+      { name: "Standing cross-leg fold", how: "Cross one leg in front of the other and fold forward, letting your head hang. Hold 30 seconds per side." },
+      { name: "Pigeon pose (reclined)", how: "Lie on your back, cross one ankle over the other knee, pull the bottom thigh in. Hold 45 seconds per side." },
     ],
     workouts: [
       { name: "Banded clamshells", how: "Same as clamshells but with a mini band just above the knees for extra resistance. 3 sets of 12 per side." },
       { name: "Fire hydrants", how: "On all fours, lift one bent knee out to the side like a dog at a hydrant, keeping hips square. 3 sets of 12 per side." },
-      { name: "Lateral band walks", how: "Mini band around your ankles, slight squat stance, step sideways 10 steps each way without letting knees cave. 3 rounds." }
+      { name: "Lateral band walks", how: "Mini band around your ankles, slight squat stance, step sideways 10 steps each way without letting knees cave. 3 rounds." },
+      { name: "Banded side steps", how: "Band just above knees, small sideways steps in a half squat. 3 sets of 10 each way." },
+      { name: "Standing hip abduction", how: "Hold a wall, lift one leg straight out to the side with control. 3 sets of 12 per leg." },
+      { name: "Curtsy lunges", how: "Step one leg back and across behind the other, lowering into a lunge. 3 sets of 10 per leg." },
     ]
   },
   erector_spinae: {
@@ -348,12 +414,25 @@ const MUSCLE_DATA = {
     function: "The long rope of muscle running up each side of your spine. Holds you upright all day and locks your back in on deadlifts and rows.",
     stretches: [
       { name: "Child's pose", how: "Kneel, sit your hips back to your heels and reach your arms forward on the floor, letting your back round and stretch. Hold 45 seconds, breathe deep." },
-      { name: "Cat-cow", how: "On all fours, slowly arch your back up like a cat, then dip it down like a cow. Move with your breath for 10 slow reps." }
+      { name: "Cat-cow", how: "On all fours, slowly arch your back up like a cat, then dip it down like a cow. Move with your breath for 10 slow reps." },
+      { name: "Knee-to-chest stretch", how: "Lie on your back, pull one knee to your chest and hold 30 seconds per side. Bring both knees in together for a deeper low-back release." },
+      { name: "Pelvic tilts", how: "Lie on your back, knees bent, gently flatten your lower back into the floor by tightening your abs. Hold 5 seconds, release. 10 slow reps. Tiny movement, big relief." },
+      { name: "Sphinx pose", how: "Lie face down, prop up on your forearms with elbows under your shoulders. Let your back sag gently and breathe. Hold 1-2 minutes. Ease off if it pinches." },
+      { name: "Prone press-up (McKenzie)", how: "Lie face down, hands under your shoulders, press your chest up while keeping your hips on the floor. Go only as far as feels good, never force it. 10 slow reps." },
+      { name: "Supine spinal twist", how: "Lie on your back, arms out wide, drop both bent knees to one side while keeping your shoulders on the floor. Hold 30-45 seconds per side." },
+      { name: "Seated spinal twist", how: "Sit tall, cross your right leg over your left, hug the knee and twist gently toward it. Hold 30 seconds per side." },
+      { name: "Standing forward fold (soft knees)", how: "Feet hip-width, knees soft, fold forward and let your arms hang. Sway gently side to side. Hold 30-60 seconds." },
+      { name: "Dead hang", how: "Hang from a pull-up bar with relaxed shoulders and let your spine decompress. Hold 20-30 seconds. Great after sitting all day." },
     ],
     workouts: [
       { name: "Deadlifts", how: "Hinge at the hips with a flat back, grip the bar and stand tall by driving your hips forward. The king of back builders. 3-4 sets of 5-8." },
       { name: "Superman holds", how: "Lie face down, lift your chest, arms and legs off the floor at once and hold 20-30 seconds. 3 rounds." },
-      { name: "Back extensions", how: "On a hyperextension bench, lower your torso with control then raise until your body is straight. Don't overextend. 3 sets of 12-15." }
+      { name: "Back extensions", how: "On a hyperextension bench, lower your torso with control then raise until your body is straight. Don't overextend. 3 sets of 12-15." },
+      { name: "Bird dog", how: "On all fours, reach your right arm and left leg out straight, keeping your back flat and hips level. Hold 5 seconds, switch. 3 sets of 8 per side." },
+      { name: "McGill curl-up", how: "One knee bent, one leg straight, hands under your lower back. Lift just your head and shoulders an inch, no crunching. 3 sets of 8, hold 5 seconds each." },
+      { name: "Dead bug", how: "Lie on your back, arms up, knees up at 90 degrees. Slowly lower opposite arm and leg toward the floor without letting your back arch. 3 sets of 8 per side." },
+      { name: "Reverse hyperextension (bodyweight)", how: "Lie face down on a bench with hips at the edge, lift your legs until they are level with your body, lower slowly. 3 sets of 12." },
+      { name: "Kettlebell deadlift", how: "A lighter, friendlier deadlift. Kettlebell between your feet, hinge back, grab it, stand tall driving your hips forward. Keep your back flat the whole time. 3 sets of 10." },
     ]
   },
   rhomboid_major: {
@@ -363,12 +442,17 @@ const MUSCLE_DATA = {
     function: "Sits under the traps between your shoulder blades. Pinches them together — the posture muscle that undoes desk slouch.",
     stretches: [
       { name: "Cross-body arm stretch", how: "Pull one arm straight across your chest and hold 30 seconds per side to open the mid-back." },
-      { name: "Thread the needle", how: "On all fours, slide your right arm under your body to the left, resting your shoulder on the floor. Hold 30 seconds per side." }
+      { name: "Thread the needle", how: "On all fours, slide your right arm under your body to the left, resting your shoulder on the floor. Hold 30 seconds per side." },
+      { name: "Eagle arms", how: "Wrap your right arm under your left, press palms together, lift your elbows. Hold 20 seconds per side." },
+      { name: "Foam roller mid-back opener", how: "Roller across mid-back, hands behind head, arch gently over it. 10 slow reps." },
+      { name: "Child's pose with side reach", how: "Child's pose, walk hands to one side to stretch the mid-back. Hold 30 seconds per side." },
     ],
     workouts: [
       { name: "Bent-over rows", how: "Hinge forward with a flat back, pull dumbbells or a barbell to your lower ribs, squeezing shoulder blades hard. 3 sets of 8-12." },
       { name: "Face pulls", how: "Cable or band at face height, pull to your forehead with elbows high, pinching shoulder blades together. 3 sets of 12-15." },
-      { name: "Band pull-aparts", how: "Hold a band at arm's length and pull it apart until it touches your chest, squeezing the mid-back. 3 sets of 15-20." }
+      { name: "Band pull-aparts", how: "Hold a band at arm's length and pull it apart until it touches your chest, squeezing the mid-back. 3 sets of 15-20." },
+      { name: "Prone Y raises", how: "Face down, thumbs up, raise arms in a Y. 3 sets of 10." },
+      { name: "Seated row with pause", how: "Row to your ribs and hold the squeeze for 2 seconds. 3 sets of 10." },
     ]
   },
   rhomboid_minor: {
@@ -463,12 +547,20 @@ const MUSCLE_DATA = {
     function: "The deep hip flexor linking your spine to your thigh. Gets tight and short from sitting all day — the usual suspect behind achy lower backs.",
     stretches: [
       { name: "Kneeling hip flexor stretch", how: "Half-kneeling, tuck your pelvis under and shift your hips forward until the front of the back hip stretches. Hold 30 seconds per side." },
-      { name: "Couch stretch", how: "Back knee against a wall or couch, front foot planted, drive your hips forward tall. Intense — 30 seconds per side." }
+      { name: "Couch stretch", how: "Back knee against a wall or couch, front foot planted, drive your hips forward tall. Intense — 30 seconds per side." },
+      { name: "Low lunge (lizard)", how: "Step into a deep lunge, drop the back knee, sink your hips forward. Hold 45 seconds per side." },
+      { name: "Standing hip flexor stretch", how: "Step one foot back, tuck your pelvis under and squeeze the back glute until you feel the front of the hip open. Hold 30 seconds per side." },
+      { name: "Supine hip flexor release", how: "Lie on your back, hug one knee to your chest and let the other leg hang long. Hold 45 seconds per side." },
+      { name: "World's greatest stretch", how: "Deep lunge, hand on the floor inside the front foot, twist open toward the front leg. Hold 20 seconds per side." },
+      { name: "Foam roller hip flexor roll", how: "Lie face down with a foam roller just below your hip bone, roll slowly side to side. Go gentle. 1 minute per side." },
     ],
     workouts: [
       { name: "Hanging knee raises", how: "Hang from a bar and lift your knees toward your chest with control, no swinging. 3 sets of 10-12." },
       { name: "Dead bugs", how: "On your back, extend opposite arm and leg slowly without letting your lower back arch off the floor. 3 sets of 8 per side." },
-      { name: "Standing marches", how: "March in place lifting knees above hip height, bracing your core. Great warm-up — 2 sets of 20." }
+      { name: "Standing marches", how: "March in place lifting knees above hip height, bracing your core. Great warm-up — 2 sets of 20." },
+      { name: "Slow mountain climbers", how: "Plank position, drive knees to chest slowly and with control. 3 sets of 10 per side." },
+      { name: "Reverse crunch", how: "Lie on your back, knees up, curl your hips off the floor toward your chest. 3 sets of 12." },
+      { name: "Supine leg lowers", how: "Lie on your back, legs straight up, lower them slowly without letting your back arch off the floor. 3 sets of 8." },
     ]
   },
   vastus_intermedius: {
@@ -565,12 +657,19 @@ const MUSCLE_DATA = {
     function: "One of the three hamstrings, running down the inner back of your thigh. Bends the knee and extends the hip when you sprint or hinge.",
     stretches: [
       { name: "Standing hamstring stretch", how: "Foot on a low step, leg straight, hinge forward at the hips until the back of the thigh stretches. 30 seconds per side." },
-      { name: "Lying towel stretch", how: "On your back, loop a towel around your foot and straighten the leg toward the ceiling. 30 seconds per side." }
+      { name: "Lying towel stretch", how: "On your back, loop a towel around your foot and straighten the leg toward the ceiling. 30 seconds per side." },
+      { name: "Seated forward fold", how: "Sit, legs straight, fold forward reaching for your toes. Hold 45 seconds." },
+      { name: "Standing toe touch (soft knees)", how: "Fold forward with knees slightly bent, let your head hang. Hold 30 seconds." },
+      { name: "Wide-leg forward fold", how: "Feet wide, fold forward, hands on the floor. Hold 45 seconds." },
+      { name: "Frog stretch", how: "On all fours, knees wide apart, rock back toward heels. Hold 30-45 seconds." },
     ],
     workouts: [
       { name: "Romanian deadlifts", how: "Soft knees, hinge at the hips pushing your butt back, lower the weights along your legs until you feel the hamstrings load, then drive hips forward. 3 sets of 8-12." },
       { name: "Lying leg curls", how: "Face down on the curl machine, curl your heels to your glutes with control. 3 sets of 10-12." },
-      { name: "Glute-ham raises", how: "Knees on a pad, ankles locked, lower your torso slowly then pull back up. Brutal — start assisted. 3 sets of 6-8." }
+      { name: "Glute-ham raises", how: "Knees on a pad, ankles locked, lower your torso slowly then pull back up. Brutal — start assisted. 3 sets of 6-8." },
+      { name: "Kettlebell single-leg deadlift", how: "One leg back, kettlebell in the opposite hand, hinge and lower. 3 sets of 8 per leg." },
+      { name: "Sliding leg curls", how: "Lie on your back, heels on sliders or a towel, bridge up and slide your feet out and back. 3 sets of 10." },
+      { name: "Good mornings", how: "Bar on your back, hinge at the hips with a slight knee bend, keeping your back flat. 3 sets of 10." },
     ]
   },
   semimembranosus: {
@@ -580,12 +679,19 @@ const MUSCLE_DATA = {
     function: "The flattest hamstring, tucked beneath the semitendinosus. Same essential job: powerful knee flexion and hip extension.",
     stretches: [
       { name: "Seated toe-touch stretch", how: "Sit with legs straight and reach for your toes, hinging at the hips rather than rounding the back. Hold 30 seconds." },
-      { name: "Doorway hamstring stretch", how: "Lie in a doorway with one leg up the frame, scoot closer for a deeper stretch. 30 seconds per side." }
+      { name: "Doorway hamstring stretch", how: "Lie in a doorway with one leg up the frame, scoot closer for a deeper stretch. 30 seconds per side." },
+      { name: "Seated hamstring stretch", how: "Sit with one leg straight, fold forward over it reaching for your toes. Hold 30 seconds per side." },
+      { name: "Wall hamstring stretch", how: "Lie on your back, one leg up against a wall, straighten it until you feel the stretch. Hold 45 seconds per side." },
+      { name: "Standing hamstring stretch", how: "One heel on a low step, hinge forward with a flat back until you feel the pull. Hold 30 seconds per side." },
+      { name: "Downward dog", how: "Hands and feet on the floor, hips high, heels pressing down. Hold 30-60 seconds." },
     ],
     workouts: [
       { name: "Romanian deadlifts", how: "Hinge deep with a flat back, feeling the hamstrings stretch under load, then snap the hips through. 3 sets of 8-12." },
       { name: "Nordic curls (assisted)", how: "Use a band or push off the floor to assist — lower slowly for 3-5 seconds. 3 sets of 5." },
-      { name: "Good mornings", how: "Bar on your back, hinge forward with soft knees until your torso is near parallel, then stand tall. Start light. 3 sets of 10." }
+      { name: "Good mornings", how: "Bar on your back, hinge forward with soft knees until your torso is near parallel, then stand tall. Start light. 3 sets of 10." },
+      { name: "Lying leg curls", how: "On a leg curl machine, curl the pad to your glutes and lower slowly. 3 sets of 10-12." },
+      { name: "Single-leg Romanian deadlift", how: "Hinge on one leg, other leg back, lower the weight toward the floor. 3 sets of 8 per leg." },
+      { name: "Sliding leg curls", how: "Lie on your back, heels on sliders or a towel, bridge up and slide your feet out and back. 3 sets of 10." },
     ]
   },
   flexor_carpi_radialis: {
@@ -667,11 +773,18 @@ const MUSCLE_DATA = {
     function: "A small deep butt muscle running over the sciatic nerve. When it gets tight it can mimic sciatica — the infamous 'pain in the butt' muscle.",
     stretches: [
       { name: "Figure-4 stretch", how: "Lie on your back, cross your right ankle over your left knee and pull the left thigh toward your chest. For a deeper hit, keep the back flat. Hold 45 seconds per side." },
-      { name: "Pigeon pose", how: "Front shin across your body, back leg long behind you, fold forward. The gold-standard piriformis stretch. 60 seconds per side." }
+      { name: "Pigeon pose", how: "Front shin across your body, back leg long behind you, fold forward. The gold-standard piriformis stretch. 60 seconds per side." },
+      { name: "Seated piriformis stretch", how: "Sit, cross one ankle over the other knee, lean forward until you feel it deep in the glute. Hold 30 seconds per side." },
+      { name: "Standing piriformis stretch", how: "Cross one ankle over the opposite knee while standing, hinge at the hips. Hold 30 seconds per side." },
+      { name: "Figure-4 against a wall", how: "Lie on your back, feet on a wall, cross one ankle over the other knee and slide the bottom foot down. Hold 45 seconds per side." },
+      { name: "Cross-legged spinal twist", how: "Sit cross-legged, twist toward one side and hold. Opens the deep hip rotators. Hold 30 seconds per side." },
     ],
     workouts: [
       { name: "Clamshells with band", how: "Mini band above the knees, side-lying, open the top knee against resistance. Directly trains the piriformis and deep rotators. 3 sets of 15 per side." },
-      { name: "Seated hip external rotation", how: "Sit tall with a band around your knees, press knees outward and hold 2 seconds. 3 sets of 15." }
+      { name: "Seated hip external rotation", how: "Sit tall with a band around your knees, press knees outward and hold 2 seconds. 3 sets of 15." },
+      { name: "Banded hip rotations", how: "Seated with a band around your knees, rotate your knees outward against resistance. 3 sets of 12." },
+      { name: "Side plank with leg lift", how: "Side plank, lift the top leg up and down slowly. 3 sets of 8 per side." },
+      { name: "Clamshell hold", how: "Side-lying clamshell, hold the top open for 10 seconds. 3 sets of 6 per side." },
     ]
   },
   iliacus: {
@@ -681,11 +794,18 @@ const MUSCLE_DATA = {
     function: "Lines the inside of your hip bone and joins the psoas to form the iliopsoas — your most powerful hip flexor. Shortens every hour you sit.",
     stretches: [
       { name: "Kneeling hip flexor stretch", how: "Half-kneeling, tuck your pelvis and shift forward until the front of the hip stretches deeply. Hold 30 seconds per side." },
-      { name: "Couch stretch", how: "Back knee up against a wall, front foot flat, drive the hips forward tall. 30 seconds per side." }
+      { name: "Couch stretch", how: "Back knee up against a wall, front foot flat, drive the hips forward tall. 30 seconds per side." },
+      { name: "Deep lunge twist", how: "Low lunge, both hands on the front knee, gently twist toward the front leg. Hold 30 seconds per side." },
+      { name: "Butterfly stretch", how: "Soles of feet together, knees out, fold forward gently. Hold 45 seconds." },
+      { name: "Frog stretch", how: "On all fours, knees wide, rock your hips back toward your heels. Hold 30-45 seconds." },
+      { name: "Seated straddle stretch", how: "Sit with legs wide, fold forward over one leg, then the middle. Hold 30 seconds each." },
     ],
     workouts: [
       { name: "Hanging leg raises", how: "Hang from a bar and raise straight legs to 90 degrees with control. The ultimate iliopsoas builder. 3 sets of 8-10." },
-      { name: "Reverse crunches", how: "Lying down, curl your hips off the floor bringing knees toward your chest. 3 sets of 12-15." }
+      { name: "Reverse crunches", how: "Lying down, curl your hips off the floor bringing knees toward your chest. 3 sets of 12-15." },
+      { name: "Standing knee drives", how: "Stand tall, drive one knee up to hip height and lower slowly. 3 sets of 10 per leg." },
+      { name: "Lying hip march", how: "Lie on your back, alternate lifting knees to 90 degrees like marching in slow motion. 3 sets of 10 per side." },
+      { name: "Seated leg lifts", how: "Sit tall on a bench, lift one straight leg to hip height, hold 3 seconds. 3 sets of 10 per leg." },
     ]
   },
   serratus_posterior: {
