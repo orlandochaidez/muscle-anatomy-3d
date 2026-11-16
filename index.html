@@ -124,22 +124,22 @@
 
 
   /* ---------- muscle list overlay ---------- */
-  #list-overlay {
+  #list-overlay, #yoga-overlay {
     position: fixed; inset: 0; z-index: 40;
     background: rgba(5,8,11,0.92); backdrop-filter: blur(8px);
     display: flex; flex-direction: column;
     opacity: 0; pointer-events: none; transition: opacity 0.25s;
     padding-top: max(12px, env(safe-area-inset-top));
   }
-  #list-overlay.open { opacity: 1; pointer-events: auto; }
-  #list-head { padding: 8px 18px 12px; display: flex; align-items: center; gap: 10px; }
-  #search {
+  #list-overlay.open, #yoga-overlay.open { opacity: 1; pointer-events: auto; }
+  .list-head { padding: 8px 18px 12px; display: flex; align-items: center; gap: 10px; }
+  #search, #yoga-search {
     flex: 1; padding: 12px 16px; border-radius: 12px; font-size: 16px;
     background: #1a232e; border: 1px solid rgba(255,255,255,0.12); color: #e8edf2;
     outline: none;
   }
-  #search:focus { border-color: #ff6b5e; }
-  #list-items { overflow-y: auto; padding: 0 12px 24px; -webkit-overflow-scrolling: touch; }
+  #search:focus, #yoga-search:focus { border-color: #ff6b5e; }
+  #list-items, #yoga-items { overflow-y: auto; padding: 0 12px 24px; -webkit-overflow-scrolling: touch; }
   .list-item {
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 12px; border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -153,6 +153,10 @@
     font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
     color: #8b95a1; padding: 16px 12px 4px;
   }
+  #yoga-count {
+    font-size: 13px; color: #8b95a1; padding: 0 18px 10px;
+  }
+  .yoga-move { padding: 2px 12px 0; }
 
   /* ---------- loader ---------- */
   #loader {
@@ -185,6 +189,7 @@
 <div id="topbar">
   <h1>MUSCLE<span>ANATOMY</span> 3D</h1>
   <div class="topbtns">
+    <button class="iconbtn" id="btn-yoga" title="All stretches">&#129496;</button>
     <button class="iconbtn" id="btn-list" title="Search muscles"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
   </div>
 </div>
@@ -221,11 +226,20 @@
 </div>
 
 <div id="list-overlay">
-  <div id="list-head">
+  <div class="list-head">
     <input id="search" type="search" placeholder="Search muscles..." autocomplete="off">
     <button class="iconbtn" id="btn-list-close">&#10005;</button>
   </div>
   <div id="list-items"></div>
+</div>
+
+<div id="yoga-overlay">
+  <div class="list-head">
+    <input id="yoga-search" type="search" placeholder="Search stretches..." autocomplete="off">
+    <button class="iconbtn" id="btn-yoga-close">&#10005;</button>
+  </div>
+  <div id="yoga-count"></div>
+  <div id="yoga-items"></div>
 </div>
 
 <div id="loader"><div class="spinner"></div><p>Loading muscles...</p></div>
@@ -592,6 +606,53 @@ document.getElementById('btn-list').addEventListener('click', () => {
 });
 document.getElementById('btn-list-close').addEventListener('click', () => overlay.classList.remove('open'));
 searchInput.addEventListener('input', () => buildList(searchInput.value));
+
+// ---- yoga: every stretch in the app ----
+const yogaOverlay = document.getElementById('yoga-overlay');
+const yogaItems = document.getElementById('yoga-items');
+const yogaSearch = document.getElementById('yoga-search');
+const YOGA_TOTAL = Object.values(MUSCLE_DATA).reduce((n, d) => n + d.stretches.length, 0);
+function buildYoga(filter = '') {
+  const q = filter.trim().toLowerCase();
+  yogaItems.innerHTML = '';
+  let shown = 0;
+  for (const [keyName, d] of Object.entries(MUSCLE_DATA)) {
+    const stretches = d.stretches.filter(s =>
+      !q || s.name.toLowerCase().includes(q) || s.how.toLowerCase().includes(q) ||
+      d.name.toLowerCase().includes(q) || d.region.toLowerCase().includes(q));
+    if (!stretches.length) continue;
+    const h = document.createElement('div');
+    h.className = 'list-item';
+    const badge = d.layer === 'deep' ? '<span class="deepbadge">DEEP</span>' : '';
+    h.innerHTML = `<div><div class="nm">${d.name}${badge}</div><div class="rg">${d.region} &middot; ${stretches.length} stretch${stretches.length > 1 ? 'es' : ''}</div></div><div class="arrow">&#8250;</div>`;
+    h.addEventListener('click', () => {
+      yogaOverlay.classList.remove('open');
+      const wantDeep = d.layer === 'deep';
+      if ((currentLayer === 'deep') !== wantDeep) setLayer(wantDeep ? 'deep' : 'surface');
+      const mesh = muscleMeshes.find(m => m.userData.key === keyName);
+      select(mesh, true);
+    });
+    yogaItems.appendChild(h);
+    for (const s of stretches) {
+      const el = document.createElement('div');
+      el.className = 'move yoga-move';
+      el.innerHTML = `<div class="move-name">${s.name}</div><div class="move-how">${s.how}</div>`;
+      yogaItems.appendChild(el);
+    }
+    shown += stretches.length;
+  }
+  document.getElementById('yoga-count').textContent = q
+    ? `${shown} stretch${shown === 1 ? '' : 'es'} match "${filter.trim()}"`
+    : `${YOGA_TOTAL} stretches · tap a muscle to see it on the body`;
+  if (!yogaItems.children.length) {
+    yogaItems.innerHTML = '<div style="padding:24px;color:#8b95a1;text-align:center">No stretches match your search.</div>';
+  }
+}
+document.getElementById('btn-yoga').addEventListener('click', () => {
+  yogaOverlay.classList.add('open'); yogaSearch.value = ''; buildYoga(); yogaSearch.focus();
+});
+document.getElementById('btn-yoga-close').addEventListener('click', () => yogaOverlay.classList.remove('open'));
+yogaSearch.addEventListener('input', () => buildYoga(yogaSearch.value));
 
 // ---- top / view buttons ----
 document.getElementById('btn-front').addEventListener('click', () => orbitTo(0));
